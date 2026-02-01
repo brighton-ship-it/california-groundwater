@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Your Well Water Test Results | California Groundwater</title>
+    <meta name="description" content="Learn how to read and interpret your well water test results. Understand safe levels for bacteria, nitrates, arsenic, and other contaminants common in California wells.">
+    <link rel="canonical" href="https://california-groundwater.org/blog/understanding-water-test-results.html">
+    <meta property="og:title" content="Understanding Your Well Water Test Results">
+    <meta property="og:description" content="Complete guide to interpreting California well water tests. Know what's safe and what needs treatment.">
+    <meta property="og:type" content="article">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #333; background: #f8fafc; }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        header { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 15px 20px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: white; }
+        .logo span { color: #60a5fa; }
+        nav a { color: rgba(255,255,255,0.9); margin-left: 25px; font-size: 0.95rem; }
+        .article-header { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 50px 20px 70px; }
+        .article-header-inner { max-width: 800px; margin: 0 auto; }
+        .breadcrumb { font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px; }
+        .breadcrumb a { color: #60a5fa; }
+        .article-header h1 { font-size: 2.5rem; margin-bottom: 15px; line-height: 1.2; }
+        .article-meta { font-size: 0.95rem; opacity: 0.9; }
+        main { max-width: 800px; margin: -30px auto 50px; padding: 0 20px; }
+        article { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 40px; }
+        article h2 { color: #1e3a5f; font-size: 1.6rem; margin: 35px 0 15px; padding-top: 20px; border-top: 1px solid #e5e7eb; }
+        article h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        article h3 { color: #2d5a87; font-size: 1.2rem; margin: 20px 0 10px; }
+        article p { margin-bottom: 15px; color: #4b5563; }
+        article ul, article ol { margin: 15px 0 20px 25px; color: #4b5563; }
+        article li { margin-bottom: 8px; }
+        
+        .result-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+        .result-table th, .result-table td { border: 1px solid #e5e7eb; padding: 12px; text-align: left; }
+        .result-table th { background: #1e3a5f; color: white; }
+        .result-table tr:nth-child(even) { background: #f9fafb; }
+        .safe { color: #059669; font-weight: 600; }
+        .caution { color: #d97706; font-weight: 600; }
+        .danger { color: #dc2626; font-weight: 600; }
+        
+        .info-box { background: #dbeafe; border-left: 4px solid #3b82f6; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .warning-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .danger-box { background: #fee2e2; border-left: 4px solid #ef4444; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        
+        .cta-inline { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 25px; border-radius: 12px; margin: 30px 0; text-align: center; }
+        .cta-inline a { color: #60a5fa; font-weight: 600; }
+        
+        footer { background: #1e3a5f; color: rgba(255,255,255,0.8); padding: 40px 20px; text-align: center; }
+        footer a { color: #60a5fa; }
+        
+        @media (max-width: 768px) {
+            .article-header h1 { font-size: 2rem; }
+            article { padding: 25px; }
+            nav { display: none; }
+            .result-table { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">💧 California<span>Groundwater</span></a>
+            <nav>
+                <a href="/well-lookup/">Well Lookup</a>
+                <a href="/pump-calculator/">Pump Calculator</a>
+                <a href="/contractors/">Find Contractors</a>
+                <a href="/faq/">FAQ</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="article-header">
+        <div class="article-header-inner">
+            <div class="breadcrumb"><a href="/">Home</a> → <a href="/blog/">Blog</a> → Water Test Results</div>
+            <h1>Understanding Your Well Water Test Results</h1>
+            <div class="article-meta">Updated January 2025 • 15 min read</div>
+        </div>
+    </div>
+    
+    <main>
+        <article>
+            <p>You got your water test results back. Now what? Water quality reports can be confusing with technical terms and units of measurement. This guide explains what each test means, what levels are safe, and what to do if your results show problems.</p>
+            
+            <h2>The Essential Tests Every California Well Should Have</h2>
+            
+            <p>California recommends these tests for private wells:</p>
+            
+            <table class="result-table">
+                <tr>
+                    <th>Test</th>
+                    <th>How Often</th>
+                    <th>Why It Matters</th>
+                </tr>
+                <tr>
+                    <td><strong>Total Coliform Bacteria</strong></td>
+                    <td>Annually</td>
+                    <td>Indicates possible contamination from surface water or sewage</td>
+                </tr>
+                <tr>
+                    <td><strong>E. coli</strong></td>
+                    <td>Annually</td>
+                    <td>Indicates fecal contamination—serious health risk</td>
+                </tr>
+                <tr>
+                    <td><strong>Nitrate</strong></td>
+                    <td>Annually</td>
+                    <td>Agricultural runoff, septic systems—dangerous for infants</td>
+                </tr>
+                <tr>
+                    <td><strong>Full Mineral Panel</strong></td>
+                    <td>Every 3-5 years</td>
+                    <td>Arsenic, iron, hardness, pH, TDS, and more</td>
+                </tr>
+            </table>
+            
+            <h2>Bacteria Tests: Coliform and E. coli</h2>
+            
+            <h3>What the Results Mean</h3>
+            
+            <table class="result-table">
+                <tr>
+                    <th>Result</th>
+                    <th>Meaning</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td class="safe">Total Coliform: Absent/Negative</td>
+                    <td>No bacteria detected</td>
+                    <td>✓ Safe to drink</td>
+                </tr>
+                <tr>
+                    <td class="caution">Total Coliform: Present</td>
+                    <td>Bacteria found (not necessarily harmful)</td>
+                    <td>Retest; if confirmed, disinfect well</td>
+                </tr>
+                <tr>
+                    <td class="safe">E. coli: Absent/Negative</td>
+                    <td>No fecal contamination</td>
+                    <td>✓ Safe to drink</td>
+                </tr>
+                <tr>
+                    <td class="danger">E. coli: Present</td>
+                    <td>Fecal contamination detected</td>
+                    <td>⚠️ DO NOT DRINK - Disinfect immediately</td>
+                </tr>
+            </table>
+            
+            <div class="danger-box">
+                <p><strong>⚠️ If E. coli is detected:</strong></p>
+                <ol>
+                    <li>Stop drinking the water immediately</li>
+                    <li>Use bottled water or boil water for 1 minute before use</li>
+                    <li>Shock chlorinate (disinfect) the well</li>
+                    <li>Find and fix the contamination source</li>
+                    <li>Retest after disinfection</li>
+                </ol>
+            </div>
+            
+            <h3>Common Causes of Bacteria</h3>
+            <ul>
+                <li>Damaged or missing well cap</li>
+                <li>Cracked well casing</li>
+                <li>Nearby septic system failure</li>
+                <li>Surface water entering the well</li>
+                <li>Recent well work or pump replacement</li>
+            </ul>
+            
+            <h2>Nitrate (NO₃)</h2>
+            
+            <p>Nitrate is one of the most common contaminants in California wells, especially in agricultural areas.</p>
+            
+            <table class="result-table">
+                <tr>
+                    <th>Result (mg/L)</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td class="safe">0-5</td>
+                    <td>Good</td>
+                    <td>✓ Safe for everyone</td>
+                </tr>
+                <tr>
+                    <td class="caution">5-10</td>
+                    <td>Elevated</td>
+                    <td>Monitor; safe for adults, watch for infants</td>
+                </tr>
+                <tr>
+                    <td class="danger">&gt;10</td>
+                    <td>Exceeds MCL</td>
+                    <td>⚠️ Do not give to infants; consider treatment</td>
+                </tr>
+            </table>
+            
+            <div class="warning-box">
+                <p><strong>Blue Baby Syndrome:</strong> Nitrate above 10 mg/L can cause methemoglobinemia in infants under 6 months. Boiling water makes nitrate concentration WORSE, not better. Use bottled water for infant formula if nitrates are high.</p>
+            </div>
+            
+            <h3>Reducing Nitrate</h3>
+            <ul>
+                <li><strong>Reverse osmosis:</strong> Most effective treatment (90%+ removal)</li>
+                <li><strong>Ion exchange:</strong> Effective but requires maintenance</li>
+                <li><strong>Deeper well:</strong> Sometimes deeper aquifers have lower nitrate</li>
+                <li><strong>Blending:</strong> Mix with nitrate-free water source</li>
+            </ul>
+            
+            <h2>Arsenic</h2>
+            
+            <p>Arsenic occurs naturally in California groundwater, particularly in the foothills, Central Valley, and some coastal areas.</p>
+            
+            <table class="result-table">
+                <tr>
+                    <th>Result (µg/L or ppb)</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td class="safe">0-5</td>
+                    <td>Good</td>
+                    <td>✓ Safe</td>
+                </tr>
+                <tr>
+                    <td class="caution">5-10</td>
+                    <td>Elevated</td>
+                    <td>Consider treatment; monitor health</td>
+                </tr>
+                <tr>
+                    <td class="danger">&gt;10</td>
+                    <td>Exceeds MCL</td>
+                    <td>⚠️ Treatment recommended</td>
+                </tr>
+            </table>
+            
+            <p><strong>Note:</strong> The EPA Maximum Contaminant Level (MCL) is 10 µg/L, but some health agencies recommend staying below 5 µg/L for long-term exposure.</p>
+            
+            <h3>Arsenic Treatment Options</h3>
+            <ul>
+                <li><strong>Reverse osmosis:</strong> Point-of-use systems for drinking water</li>
+                <li><strong>Adsorption media:</strong> Iron-based filters that bind arsenic</li>
+                <li><strong>Whole-house systems:</strong> More expensive but treats all water</li>
+            </ul>
+            
+            <h2>Iron and Manganese</h2>
+            
+            <p>These minerals are common in California wells. They're not health hazards at typical levels but cause aesthetic problems.</p>
+            
+            <table class="result-table">
+                <tr>
+                    <th>Contaminant</th>
+                    <th>Secondary MCL</th>
+                    <th>Problems Caused</th>
+                </tr>
+                <tr>
+                    <td><strong>Iron</strong></td>
+                    <td>0.3 mg/L</td>
+                    <td>Orange/brown staining, metallic taste, stained laundry</td>
+                </tr>
+                <tr>
+                    <td><strong>Manganese</strong></td>
+                    <td>0.05 mg/L</td>
+                    <td>Black staining, bitter taste</td>
+                </tr>
+            </table>
+            
+            <h3>Treatment Options</h3>
+            <ul>
+                <li><strong>Oxidation + filtration:</strong> Air injection or chlorination followed by filter</li>
+                <li><strong>Water softener:</strong> Removes low levels of iron</li>
+                <li><strong>Greensand filter:</strong> Effective for combined iron/manganese</li>
+                <li><strong>Birm filter:</strong> Chemical-free oxidation for lower iron levels</li>
+            </ul>
+            
+            <h2>Hardness</h2>
+            
+            <p>Hard water contains high levels of calcium and magnesium. It's not a health concern but affects appliances and cleaning.</p>
+            
+            <table class="result-table">
+                <tr>
+                    <th>Hardness (mg/L or ppm)</th>
+                    <th>Classification</th>
+                    <th>Effects</th>
+                </tr>
+                <tr>
+                    <td>0-60</td>
+                    <td class="safe">Soft</td>
+                    <td>Ideal for most uses</td>
+                </tr>
+                <tr>
+                    <td>61-120</td>
+                    <td>Moderately hard</td>
+                    <td>Minor scaling possible</td>
+                </tr>
+                <tr>
+                    <td>121-180</td>
+                    <td class="caution">Hard</td>
+                    <td>Noticeable scaling, reduced soap efficiency</td>
+                </tr>
+                <tr>
+                    <td>&gt;180</td>
+                    <td class="danger">Very hard</td>
+                    <td>Significant scaling, appliance damage</td>
+                </tr>
+            </table>
+            
+            <p><strong>Hardness in grains per gallon (gpg):</strong> Divide mg/L by 17.1. Most water softeners are sized by gpg.</p>
+            
+            <h2>pH Level</h2>
+            
+            <p>pH measures how acidic or alkaline your water is.</p>
+            
+            <table class="result-table">
+                <tr>
+                    <th>pH Level</th>
+                    <th>Classification</th>
+                    <th>Concerns</th>
+                </tr>
+                <tr>
+                    <td class="danger">&lt;6.5</td>
+                    <td>Acidic</td>
+                    <td>Corrodes pipes, can leach metals (copper, lead)</td>
+                </tr>
+                <tr>
+                    <td class="safe">6.5-8.5</td>
+                    <td>Normal range</td>
+                    <td>✓ Ideal for most uses</td>
+                </tr>
+                <tr>
+                    <td class="caution">&gt;8.5</td>
+                    <td>Alkaline</td>
+                    <td>Scale formation, bitter taste</td>
+                </tr>
+            </table>
+            
+            <div class="info-box">
+                <p><strong>Low pH + copper pipes = health risk.</strong> Acidic water can leach copper from pipes, causing elevated copper levels at the tap. If your pH is below 6.5 and you have copper plumbing, test for copper at the tap after water sits in pipes overnight.</p>
+            </div>
+            
+            <h2>Total Dissolved Solids (TDS)</h2>
+            
+            <p>TDS measures all dissolved minerals combined. It's an indicator of overall water quality.</p>
+            
+            <table class="result-table">
+                <tr>
+                    <th>TDS (mg/L)</th>
+                    <th>Classification</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td class="safe">&lt;300</td>
+                    <td>Excellent</td>
+                    <td>Low mineral content</td>
+                </tr>
+                <tr>
+                    <td>300-500</td>
+                    <td>Good</td>
+                    <td>Acceptable for most uses</td>
+                </tr>
+                <tr>
+                    <td class="caution">500-1000</td>
+                    <td>Fair</td>
+                    <td>May have taste; secondary MCL is 500</td>
+                </tr>
+                <tr>
+                    <td class="danger">&gt;1000</td>
+                    <td>Poor</td>
+                    <td>Noticeable taste, potential scale issues</td>
+                </tr>
+            </table>
+            
+            <h2>Other Common Tests</h2>
+            
+            <h3>Fluoride</h3>
+            <p>Natural fluoride in groundwater varies widely. MCL is 4 mg/L, but levels above 2 mg/L may cause dental fluorosis in children.</p>
+            
+            <h3>Sulfate</h3>
+            <p>Can cause laxative effects above 250 mg/L. Often associated with "rotten egg" smell when combined with bacteria.</p>
+            
+            <h3>Chloride</h3>
+            <p>Salty taste above 250 mg/L. High levels may indicate saltwater intrusion (coastal areas) or contamination.</p>
+            
+            <h3>Uranium</h3>
+            <p>Naturally occurring in some California groundwater, especially in granite areas. MCL is 30 µg/L.</p>
+            
+            <h2>California-Specific Concerns</h2>
+            
+            <p>Depending on your location, you may want additional tests:</p>
+            
+            <table class="result-table">
+                <tr>
+                    <th>Region</th>
+                    <th>Common Issues</th>
+                    <th>Recommended Tests</th>
+                </tr>
+                <tr>
+                    <td>Central Valley (agricultural)</td>
+                    <td>Nitrates, pesticides</td>
+                    <td>Nitrate, herbicides/pesticides panel</td>
+                </tr>
+                <tr>
+                    <td>Foothills (gold country)</td>
+                    <td>Arsenic, uranium</td>
+                    <td>Arsenic, uranium, gross alpha</td>
+                </tr>
+                <tr>
+                    <td>Coastal areas</td>
+                    <td>Saltwater intrusion</td>
+                    <td>TDS, chloride, sodium</td>
+                </tr>
+                <tr>
+                    <td>Near oil/gas production</td>
+                    <td>Petroleum compounds</td>
+                    <td>VOCs, BTEX</td>
+                </tr>
+                <tr>
+                    <td>Former orchard land</td>
+                    <td>Historic pesticides</td>
+                    <td>Lead, arsenic (from lead arsenate)</td>
+                </tr>
+            </table>
+            
+            <div class="cta-inline">
+                <p>Need to understand well conditions in your area? Use our <a href="/well-lookup/">Well Lookup Tool</a> to research nearby wells, or consult with a <a href="https://wellwater.scws.site" target="_blank" rel="noopener">well water specialist</a> for personalized treatment recommendations.</p>
+            </div>
+            
+            <h2>Where to Get Your Water Tested</h2>
+            
+            <p>For reliable results, use a certified laboratory:</p>
+            
+            <ol>
+                <li><strong>County health department:</strong> Many offer free or low-cost bacteria testing</li>
+                <li><strong>State-certified labs:</strong> Search the <a href="https://www.waterboards.ca.gov/drinking_water/certlic/labs/elap_labs.html" target="_blank" rel="noopener">ELAP database</a></li>
+                <li><strong>Mail-order labs:</strong> Convenient but verify they're certified</li>
+            </ol>
+            
+            <h3>Testing Costs</h3>
+            <ul>
+                <li>Bacteria only: $20-$50</li>
+                <li>Bacteria + nitrate: $30-$75</li>
+                <li>Basic mineral panel: $75-$150</li>
+                <li>Comprehensive panel: $150-$400</li>
+            </ul>
+            
+            <h2>Next Steps After Testing</h2>
+            
+            <p>Based on your results:</p>
+            
+            <ol>
+                <li><strong>All clear:</strong> Test again in one year (bacteria/nitrate) and 3-5 years (full panel)</li>
+                <li><strong>Minor issues:</strong> Consider point-of-use treatment (drinking water only)</li>
+                <li><strong>Significant contamination:</strong> Consult a water treatment professional for whole-house options</li>
+                <li><strong>Bacterial contamination:</strong> Disinfect well and identify contamination source</li>
+            </ol>
+            
+            <p>Keep your test results on file. Tracking changes over time helps identify problems early and provides documentation if you ever sell the property.</p>
+            
+        </article>
+    </main>
+    
+    <footer>
+        <p>© 2025 California Groundwater | <a href="/">Home</a> | <a href="/faq/">FAQ</a> | <a href="/blog/">More Articles</a></p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Information provided for educational purposes. Consult a licensed professional for specific advice.</p>
+    </footer>
+</body>
+</html>

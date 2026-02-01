@@ -14,30 +14,66 @@
     <title>Pump Sizing Tool | California Groundwater</title>
     <style>
         :root {
-            --primary: #1a5276;
-            --secondary: #2980b9;
-            --accent: #27ae60;
-            --warning: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
+            --primary: #1e3a5f;
+            --secondary: #2d5a87;
+            --accent: #60a5fa;
+            --warning: #ef4444;
+            --light: #f8fafc;
+            --dark: #1e3a5f;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
             min-height: 100vh;
             padding: 20px;
         }
         
         body.embedded {
             padding: 10px;
-            background: #f5f6fa;
+            background: #f8fafc;
         }
         
         body.embedded .header {
             display: none;
+        }
+        
+        body.embedded .site-nav {
+            display: none;
+        }
+        
+        .site-nav {
+            background: rgba(0,0,0,0.2);
+            padding: 15px 20px;
+            margin: -20px -20px 20px -20px;
+        }
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        .nav-logo span { color: #60a5fa; }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.9rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
         }
         
         .container {
@@ -274,11 +310,22 @@
     </style>
 </head>
 <body>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">💧 California<span>Groundwater</span></a>
+            <div class="nav-links">
+                <a href="/well-lookup/">Well Lookup</a>
+                <a href="/pump-calculator/" class="active">Pump Calculator</a>
+                <a href="/contractors/">Contractors</a>
+                <a href="/faq/">FAQ</a>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="card">
             <div class="header">
-                <h1>🔧 Pump Sizing Calculator</h1>
-                <p>Get the right pump for your well - Goulds, Grundfos & Franklin pump ends</p>
+                <h1>⚙️ Well Pump Sizing Calculator</h1>
+                <p>Calculate the perfect pump for your California well - Goulds, Grundfos & Franklin pump ends</p>
             </div>
             
             <form id="pumpForm">

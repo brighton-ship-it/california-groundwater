@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Depth by California County | California Groundwater</title>
+    <meta name="description" content="Find typical well depths for all 58 California counties. County-specific guides include average depths, costs, permit info, and local conditions.">
+    <link rel="canonical" href="https://california-groundwater.org/counties/">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8fafc; }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        header { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 15px 20px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: white; }
+        .logo span { color: #60a5fa; }
+        nav a { color: rgba(255,255,255,0.9); margin-left: 25px; font-size: 0.95rem; }
+        .hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 50px 20px 70px; text-align: center; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        main { max-width: 1000px; margin: -30px auto 50px; padding: 0 20px; }
+        
+        .county-container { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 40px; }
+        
+        .region-section { margin-bottom: 40px; }
+        .region-section:last-child { margin-bottom: 0; }
+        .region-title { font-size: 1.4rem; color: #1e3a5f; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #60a5fa; }
+        
+        .county-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        
+        .county-link {
+            display: block;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            transition: all 0.2s;
+            border: 1px solid #e5e7eb;
+        }
+        .county-link:hover {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+        .county-link strong { display: block; color: #1e3a5f; margin-bottom: 5px; }
+        .county-link span { font-size: 0.9rem; color: #6b7280; }
+        
+        .featured-counties { margin-bottom: 40px; }
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .featured-card {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        .featured-card h3 { margin-bottom: 10px; }
+        .featured-card p { opacity: 0.9; margin-bottom: 15px; font-size: 0.95rem; }
+        .featured-card a { color: #60a5fa; font-weight: 600; }
+        
+        .cta-box { background: #f0f9ff; border: 2px solid #0ea5e9; border-radius: 12px; padding: 25px; margin-top: 30px; text-align: center; }
+        
+        footer { background: #1e3a5f; color: rgba(255,255,255,0.8); padding: 40px 20px; text-align: center; margin-top: 50px; }
+        footer a { color: #60a5fa; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            nav { display: none; }
+            .county-container { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">💧 California<span>Groundwater</span></a>
+            <nav>
+                <a href="/well-lookup/">Well Lookup</a>
+                <a href="/pump-calculator/">Pump Calculator</a>
+                <a href="/contractors/">Find Contractors</a>
+                <a href="/faq/">FAQ</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <h1>Well Depth by California County</h1>
+        <p>Find typical well depths, costs, and conditions for your county</p>
+    </div>
+    
+    <main>
+        <div class="county-container">
+            
+            <div class="featured-counties">
+                <h2 style="color: #1e3a5f; margin-bottom: 15px;">Popular County Guides</h2>
+                <div class="featured-grid">
+                    <div class="featured-card">
+                        <h3>Los Angeles County</h3>
+                        <p>Typical depth: 200-600 ft. Complex geology with multiple basins.</p>
+                        <a href="/counties/los-angeles/">View full guide →</a>
+                    </div>
+                    <div class="featured-card">
+                        <h3>San Diego County</h3>
+                        <p>Typical depth: 150-500 ft. Fractured rock formations common.</p>
+                        <a href="/counties/san-diego/">View full guide →</a>
+                    </div>
+                    <div class="featured-card">
+                        <h3>Fresno County</h3>
+                        <p>Typical depth: 200-800 ft. Agricultural pumping affects levels.</p>
+                        <a href="/counties/fresno/">View full guide →</a>
+                    </div>
+                    <div class="featured-card">
+                        <h3>Riverside County</h3>
+                        <p>Typical depth: 200-600 ft. Desert and valley conditions vary.</p>
+                        <a href="/counties/riverside/">View full guide →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <section class="region-section">
+                <h2 class="region-title">Southern California</h2>
+                <div class="county-grid">
+                    <a href="/counties/los-angeles/" class="county-link"><strong>Los Angeles</strong><span>200-600 ft typical</span></a>
+                    <a href="/counties/san-diego/" class="county-link"><strong>San Diego</strong><span>150-500 ft typical</span></a>
+                    <a href="/counties/orange/" class="county-link"><strong>Orange</strong><span>200-500 ft typical</span></a>
+                    <a href="/counties/riverside/" class="county-link"><strong>Riverside</strong><span>200-600 ft typical</span></a>
+                    <a href="/counties/san-bernardino/" class="county-link"><strong>San Bernardino</strong><span>200-800 ft typical</span></a>
+                    <a href="/counties/ventura/" class="county-link"><strong>Ventura</strong><span>150-400 ft typical</span></a>
+                    <a href="/counties/santa-barbara/" class="county-link"><strong>Santa Barbara</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/imperial/" class="county-link"><strong>Imperial</strong><span>100-300 ft typical</span></a>
+                </div>
+            </section>
+            
+            <section class="region-section">
+                <h2 class="region-title">Central Valley</h2>
+                <div class="county-grid">
+                    <a href="/counties/fresno/" class="county-link"><strong>Fresno</strong><span>200-800 ft typical</span></a>
+                    <a href="/counties/kern/" class="county-link"><strong>Kern</strong><span>200-1000+ ft typical</span></a>
+                    <a href="/counties/tulare/" class="county-link"><strong>Tulare</strong><span>200-800 ft typical</span></a>
+                    <a href="/counties/sacramento/" class="county-link"><strong>Sacramento</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/san-joaquin/" class="county-link"><strong>San Joaquin</strong><span>150-500 ft typical</span></a>
+                    <a href="/counties/stanislaus/" class="county-link"><strong>Stanislaus</strong><span>150-500 ft typical</span></a>
+                    <a href="/counties/merced/" class="county-link"><strong>Merced</strong><span>150-600 ft typical</span></a>
+                    <a href="/counties/madera/" class="county-link"><strong>Madera</strong><span>200-600 ft typical</span></a>
+                    <a href="/counties/kings/" class="county-link"><strong>Kings</strong><span>200-600 ft typical</span></a>
+                    <a href="/counties/yolo/" class="county-link"><strong>Yolo</strong><span>100-400 ft typical</span></a>
+                </div>
+            </section>
+            
+            <section class="region-section">
+                <h2 class="region-title">San Francisco Bay Area</h2>
+                <div class="county-grid">
+                    <a href="/counties/alameda/" class="county-link"><strong>Alameda</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/contra-costa/" class="county-link"><strong>Contra Costa</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/santa-clara/" class="county-link"><strong>Santa Clara</strong><span>100-500 ft typical</span></a>
+                    <a href="/counties/san-mateo/" class="county-link"><strong>San Mateo</strong><span>100-300 ft typical</span></a>
+                    <a href="/counties/sonoma/" class="county-link"><strong>Sonoma</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/napa/" class="county-link"><strong>Napa</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/marin/" class="county-link"><strong>Marin</strong><span>100-300 ft typical</span></a>
+                    <a href="/counties/solano/" class="county-link"><strong>Solano</strong><span>100-400 ft typical</span></a>
+                </div>
+            </section>
+            
+            <section class="region-section">
+                <h2 class="region-title">Central Coast</h2>
+                <div class="county-grid">
+                    <a href="/counties/monterey/" class="county-link"><strong>Monterey</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/san-luis-obispo/" class="county-link"><strong>San Luis Obispo</strong><span>100-500 ft typical</span></a>
+                    <a href="/counties/santa-cruz/" class="county-link"><strong>Santa Cruz</strong><span>100-300 ft typical</span></a>
+                    <a href="/counties/san-benito/" class="county-link"><strong>San Benito</strong><span>100-400 ft typical</span></a>
+                </div>
+            </section>
+            
+            <section class="region-section">
+                <h2 class="region-title">Northern California</h2>
+                <div class="county-grid">
+                    <a href="/counties/shasta/" class="county-link"><strong>Shasta</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/butte/" class="county-link"><strong>Butte</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/placer/" class="county-link"><strong>Placer</strong><span>100-500 ft typical</span></a>
+                    <a href="/counties/el-dorado/" class="county-link"><strong>El Dorado</strong><span>150-500 ft typical</span></a>
+                    <a href="/counties/nevada-county/" class="county-link"><strong>Nevada</strong><span>150-500 ft typical</span></a>
+                    <a href="/counties/yuba/" class="county-link"><strong>Yuba</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/sutter/" class="county-link"><strong>Sutter</strong><span>100-300 ft typical</span></a>
+                    <a href="/counties/tehama/" class="county-link"><strong>Tehama</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/glenn/" class="county-link"><strong>Glenn</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/colusa/" class="county-link"><strong>Colusa</strong><span>100-400 ft typical</span></a>
+                </div>
+            </section>
+            
+            <section class="region-section">
+                <h2 class="region-title">Sierra Foothills</h2>
+                <div class="county-grid">
+                    <a href="/counties/amador/" class="county-link"><strong>Amador</strong><span>150-500 ft typical</span></a>
+                    <a href="/counties/calaveras/" class="county-link"><strong>Calaveras</strong><span>150-500 ft typical</span></a>
+                    <a href="/counties/tuolumne/" class="county-link"><strong>Tuolumne</strong><span>150-500 ft typical</span></a>
+                    <a href="/counties/mariposa/" class="county-link"><strong>Mariposa</strong><span>150-500 ft typical</span></a>
+                </div>
+            </section>
+            
+            <section class="region-section">
+                <h2 class="region-title">Far North & Mountain</h2>
+                <div class="county-grid">
+                    <a href="/counties/humboldt/" class="county-link"><strong>Humboldt</strong><span>50-300 ft typical</span></a>
+                    <a href="/counties/mendocino/" class="county-link"><strong>Mendocino</strong><span>50-300 ft typical</span></a>
+                    <a href="/counties/lake/" class="county-link"><strong>Lake</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/siskiyou/" class="county-link"><strong>Siskiyou</strong><span>50-300 ft typical</span></a>
+                    <a href="/counties/del-norte/" class="county-link"><strong>Del Norte</strong><span>50-200 ft typical</span></a>
+                    <a href="/counties/trinity/" class="county-link"><strong>Trinity</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/lassen/" class="county-link"><strong>Lassen</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/modoc/" class="county-link"><strong>Modoc</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/plumas/" class="county-link"><strong>Plumas</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/sierra/" class="county-link"><strong>Sierra</strong><span>100-400 ft typical</span></a>
+                </div>
+            </section>
+            
+            <section class="region-section">
+                <h2 class="region-title">Eastern California</h2>
+                <div class="county-grid">
+                    <a href="/counties/inyo/" class="county-link"><strong>Inyo</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/mono/" class="county-link"><strong>Mono</strong><span>100-400 ft typical</span></a>
+                    <a href="/counties/alpine/" class="county-link"><strong>Alpine</strong><span>100-400 ft typical</span></a>
+                </div>
+            </section>
+            
+            <div class="cta-box">
+                <h3 style="color: #1e3a5f; margin-bottom: 10px;">Can't Find Your County?</h3>
+                <p style="color: #4b5563; margin-bottom: 15px;">Use our Well Lookup Tool to search well records near any California address.</p>
+                <a href="/well-lookup/" style="display: inline-block; background: #2563eb; color: white; padding: 12px 25px; border-radius: 8px; font-weight: 600;">Search Well Records →</a>
+            </div>
+            
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2025 California Groundwater | <a href="/">Home</a> | <a href="/faq/">FAQ</a> | <a href="/blog/">Blog</a></p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Well depth data from California DWR Well Completion Reports</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Owner's Blog - Guides & Articles | California Groundwater</title>
+    <meta name="description" content="Expert guides for California well owners. Learn about well maintenance, pump replacement, water testing, and solving common well problems.">
+    <link rel="canonical" href="https://california-groundwater.org/blog/">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8fafc; }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        header { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 15px 20px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: white; }
+        .logo span { color: #60a5fa; }
+        nav a { color: rgba(255,255,255,0.9); margin-left: 25px; font-size: 0.95rem; }
+        
+        .hero { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 50px 20px 70px; text-align: center; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        
+        main { max-width: 1000px; margin: -30px auto 50px; padding: 0 20px; }
+        
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+        .blog-card-content { padding: 25px; }
+        .blog-category {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .blog-card h2 { font-size: 1.3rem; margin-bottom: 10px; color: #1e3a5f; }
+        .blog-card h2 a { color: inherit; }
+        .blog-card h2 a:hover { color: #2563eb; text-decoration: none; }
+        .blog-card p { color: #6b7280; font-size: 0.95rem; margin-bottom: 15px; }
+        .blog-meta { font-size: 0.85rem; color: #9ca3af; }
+        
+        .featured-card {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .featured-card .featured-image {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            min-height: 200px;
+        }
+        .featured-card .blog-card-content { padding: 35px; }
+        .featured-card h2 { font-size: 1.6rem; }
+        
+        footer { background: #1e3a5f; color: rgba(255,255,255,0.8); padding: 40px 20px; text-align: center; margin-top: 50px; }
+        footer a { color: #60a5fa; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            nav { display: none; }
+            .featured-card { grid-template-columns: 1fr; }
+            .featured-card .featured-image { min-height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">💧 California<span>Groundwater</span></a>
+            <nav>
+                <a href="/well-lookup/">Well Lookup</a>
+                <a href="/pump-calculator/">Pump Calculator</a>
+                <a href="/contractors/">Find Contractors</a>
+                <a href="/faq/">FAQ</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <h1>Well Owner's Resource Center</h1>
+        <p>Expert guides, tips, and solutions for California well owners</p>
+    </div>
+    
+    <main>
+        <div class="blog-grid">
+            
+            <article class="blog-card featured-card">
+                <div class="featured-image">🔧</div>
+                <div class="blog-card-content">
+                    <span class="blog-category">Troubleshooting</span>
+                    <h2><a href="/blog/common-well-problems-solutions.html">10 Common Well Problems and How to Fix Them</a></h2>
+                    <p>From low pressure to strange odors, learn how to diagnose and solve the most common issues California well owners face. Includes DIY fixes and when to call a pro.</p>
+                    <div class="blog-meta">12 min read • Updated January 2025</div>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-card-content">
+                    <span class="blog-category">Equipment</span>
+                    <h2><a href="/blog/when-to-replace-well-pump.html">When to Replace Your Well Pump: 7 Warning Signs</a></h2>
+                    <p>Learn the warning signs of pump failure, typical pump lifespan, and what to expect for replacement costs in California.</p>
+                    <div class="blog-meta">10 min read • Updated January 2025</div>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-card-content">
+                    <span class="blog-category">Water Quality</span>
+                    <h2><a href="/blog/understanding-water-test-results.html">Understanding Your Well Water Test Results</a></h2>
+                    <p>Decode your water test report. Learn safe levels for bacteria, nitrates, arsenic, and other contaminants common in California wells.</p>
+                    <div class="blog-meta">15 min read • Updated January 2025</div>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-card-content">
+                    <span class="blog-category">Maintenance</span>
+                    <h2><a href="/blog/seasonal-well-maintenance-guide.html">Seasonal Well Maintenance Guide for California</a></h2>
+                    <p>Keep your well running smoothly year-round with this season-by-season maintenance checklist for California conditions.</p>
+                    <div class="blog-meta">8 min read • Updated January 2025</div>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-card-content">
+                    <span class="blog-category">Well Depth by County</span>
+                    <h2><a href="/counties/">How Deep is a Well in Your County?</a></h2>
+                    <p>County-specific guides to well depths in California. Research typical depths, costs, and conditions for your area.</p>
+                    <div class="blog-meta">County guides available</div>
+                </div>
+            </article>
+            
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2025 California Groundwater | <a href="/">Home</a> | <a href="/faq/">FAQ</a> | <a href="/resources/">Resources</a></p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Expert information for California well owners</p>
+    </footer>
+</body>
+</html>
