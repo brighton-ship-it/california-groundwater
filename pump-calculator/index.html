@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pump Sizing Tool | SoCal Groundwater</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #2980b9;
+            --accent: #27ae60;
+            --warning: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        body.embedded {
+            padding: 10px;
+            background: #f5f6fa;
+        }
+        
+        body.embedded .header {
+            display: none;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .section {
+            padding: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child { border-bottom: none; }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title .number {
+            background: var(--primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        .hint {
+            font-size: 12px;
+            color: #777;
+            margin-top: 4px;
+        }
+        
+        input, select {
+            padding: 12px 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+        }
+        
+        .results {
+            display: none;
+        }
+        
+        .results.show { display: block; }
+        
+        .result-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .result-card h3 {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .result-card .value {
+            font-size: 36px;
+            font-weight: 700;
+        }
+        
+        .result-card .unit {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        
+        .spec-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .spec-item .label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .spec-item .value {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-top: 4px;
+        }
+        
+        .recommendation {
+            background: #e8f6f3;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .recommendation h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .warning-box {
+            background: #fdecea;
+            border: 1px solid var(--warning);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .warning-box h4 {
+            color: var(--warning);
+            margin-bottom: 8px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .cta-section h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .cta-section p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .cta-btn {
+            background: var(--primary);
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .specs-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>🔧 Pump Sizing Calculator</h1>
+                <p>Get the right pump for your well - Goulds, Grundfos & Franklin pump ends</p>
+            </div>
+            
+            <form id="pumpForm">
+                <div class="section">
+                    <div class="section-title">
+                        <span class="number">1</span>
+                        Well Information
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="wellDepth">Total Well Depth (ft)</label>
+                            <input type="number" id="wellDepth" required min="20" max="2000" placeholder="e.g., 400">
+                            <span class="hint">From ground to bottom of well</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="staticLevel">Static Water Level (ft)</label>
+                            <input type="number" id="staticLevel" required min="0" max="1500" placeholder="e.g., 100">
+                            <span class="hint">Water level when not pumping</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="drawdown">Drawdown Level (ft)</label>
+                            <input type="number" id="drawdown" required min="0" max="1500" placeholder="e.g., 200">
+                            <span class="hint">Water level while pumping</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="casingDia">Casing Diameter (in)</label>
+                            <select id="casingDia" required>
+                                <option value="">Select...</option>
+                                <option value="4">4"</option>
+                                <option value="5">5"</option>
+                                <option value="6">6"</option>
+                                <option value="8">8"</option>
+                                <option value="10">10"</option>
+                                <option value="12">12"</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="number">2</span>
+                        Water Requirements
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="flowRate">Desired Flow Rate (GPM)</label>
+                            <input type="number" id="flowRate" required min="1" max="500" placeholder="e.g., 15">
+                            <span class="hint">Typical home: 8-12 GPM</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pressurePSI">Desired Pressure (PSI)</label>
+                            <select id="pressurePSI" required>
+                                <option value="">Select...</option>
+                                <option value="0">0 PSI (storage tank / gravity)</option>
+                                <option value="40">40 PSI (30/50 switch)</option>
+                                <option value="50" selected>50 PSI (40/60 switch)</option>
+                                <option value="60">60 PSI (50/70 switch)</option>
+                                <option value="70">70 PSI (high pressure)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="elevation">Elevation Above Well (ft)</label>
+                            <input type="number" id="elevation" value="0" min="0" max="500" placeholder="e.g., 50">
+                            <span class="hint">Height from well to highest fixture</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pipeLength">Pipe Run Length (ft)</label>
+                            <input type="number" id="pipeLength" value="100" min="10" max="2000" placeholder="e.g., 200">
+                            <span class="hint">Total pipe from pump to house</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">
+                        <span class="number">3</span>
+                        Power Supply
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="voltage">Available Voltage</label>
+                            <select id="voltage" required>
+                                <option value="230" selected>230V Single Phase</option>
+                                <option value="230-3">230V Three Phase</option>
+                                <option value="460-3">460V Three Phase</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <button type="submit" class="btn">Calculate Pump Size →</button>
+                </div>
+            </form>
+            
+            <div class="results" id="results">
+                <div class="section">
+                    <div class="section-title">
+                        <span class="number">✓</span>
+                        Your Pump Requirements
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>Total Dynamic Head (TDH)</h3>
+                        <span class="value" id="tdhValue">--</span>
+                        <span class="unit">feet</span>
+                    </div>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="label">Recommended HP</div>
+                            <div class="value" id="hpValue">--</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Motor Size</div>
+                            <div class="value" id="motorSize">--</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Wire Size</div>
+                            <div class="value" id="wireSize">--</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Pump Setting</div>
+                            <div class="value" id="pumpSetting">--</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Est. Flow</div>
+                            <div class="value" id="estFlow">--</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px;">
+                        <h3 style="color: var(--primary); font-size: 18px; margin-bottom: 15px;">📦 Compatible Pump Ends by Brand</h3>
+                        <div id="pumpEndResults" style="display: grid; gap: 12px;"></div>
+                    </div>
+                    
+                    <div class="recommendation" id="recommendation">
+                        <h4>💡 Our Recommendation</h4>
+                        <p id="recText"></p>
+                    </div>
+                    
+                    <div class="warning-box" id="warnings" style="display:none;">
+                        <h4>⚠️ Important Notes</h4>
+                        <ul id="warningList"></ul>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <h3>Ready to Install?</h3>
+                    <p>Our team can verify these calculations and provide a professional quote.</p>
+                    <a href="tel:7604408520" class="btn cta-btn">📞 Call (760) 440-8520</a>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p>This calculator provides estimates based on Goulds, Grundfos, and Franklin pump end specifications. Actual requirements may vary based on well conditions, water quality, and other factors. Always consult a licensed well professional for final sizing.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Franklin Electric pump sizing data
+        const PUMP_DATA = {
+            // GPM ranges and recommended HP for different TDH ranges
+            // Based on Franklin Electric submersible pump curves
+            sizeChart: [
+                { maxGPM: 5, maxTDH: 250, hp: 0.5, motorDia: '4"' },
+                { maxGPM: 5, maxTDH: 400, hp: 0.75, motorDia: '4"' },
+                { maxGPM: 5, maxTDH: 600, hp: 1, motorDia: '4"' },
+                { maxGPM: 10, maxTDH: 200, hp: 0.5, motorDia: '4"' },
+                { maxGPM: 10, maxTDH: 350, hp: 0.75, motorDia: '4"' },
+                { maxGPM: 10, maxTDH: 500, hp: 1, motorDia: '4"' },
+                { maxGPM: 10, maxTDH: 700, hp: 1.5, motorDia: '4"' },
+                { maxGPM: 15, maxTDH: 200, hp: 0.75, motorDia: '4"' },
+                { maxGPM: 15, maxTDH: 350, hp: 1, motorDia: '4"' },
+                { maxGPM: 15, maxTDH: 500, hp: 1.5, motorDia: '4"' },
+                { maxGPM: 15, maxTDH: 650, hp: 2, motorDia: '4"' },
+                { maxGPM: 15, maxTDH: 850, hp: 3, motorDia: '4"' },
+                { maxGPM: 20, maxTDH: 150, hp: 0.75, motorDia: '4"' },
+                { maxGPM: 20, maxTDH: 280, hp: 1, motorDia: '4"' },
+                { maxGPM: 20, maxTDH: 400, hp: 1.5, motorDia: '4"' },
+                { maxGPM: 20, maxTDH: 550, hp: 2, motorDia: '4"' },
+                { maxGPM: 20, maxTDH: 700, hp: 3, motorDia: '4"' },
+                { maxGPM: 20, maxTDH: 900, hp: 5, motorDia: '4"' },
+                { maxGPM: 30, maxTDH: 200, hp: 1.5, motorDia: '4"' },
+                { maxGPM: 30, maxTDH: 350, hp: 2, motorDia: '4"' },
+                { maxGPM: 30, maxTDH: 500, hp: 3, motorDia: '4"' },
+                { maxGPM: 30, maxTDH: 700, hp: 5, motorDia: '4"' },
+                { maxGPM: 30, maxTDH: 900, hp: 7.5, motorDia: '6"' },
+                { maxGPM: 50, maxTDH: 200, hp: 2, motorDia: '4"' },
+                { maxGPM: 50, maxTDH: 300, hp: 3, motorDia: '4"' },
+                { maxGPM: 50, maxTDH: 450, hp: 5, motorDia: '4"' },
+                { maxGPM: 50, maxTDH: 600, hp: 7.5, motorDia: '6"' },
+                { maxGPM: 50, maxTDH: 800, hp: 10, motorDia: '6"' },
+                { maxGPM: 75, maxTDH: 200, hp: 3, motorDia: '6"' },
+                { maxGPM: 75, maxTDH: 350, hp: 5, motorDia: '6"' },
+                { maxGPM: 75, maxTDH: 500, hp: 7.5, motorDia: '6"' },
+                { maxGPM: 75, maxTDH: 700, hp: 10, motorDia: '6"' },
+                { maxGPM: 75, maxTDH: 900, hp: 15, motorDia: '6"' },
+                { maxGPM: 100, maxTDH: 200, hp: 5, motorDia: '6"' },
+                { maxGPM: 100, maxTDH: 350, hp: 7.5, motorDia: '6"' },
+                { maxGPM: 100, maxTDH: 500, hp: 10, motorDia: '6"' },
+                { maxGPM: 100, maxTDH: 700, hp: 15, motorDia: '6"' },
+                { maxGPM: 100, maxTDH: 900, hp: 20, motorDia: '6"' },
+            ],
+            
+            // Wire sizing based on HP and distance (230V single phase)
+            wireChart: {
+                0.5: { 100: 14, 200: 12, 300: 10, 500: 8 },
+                0.75: { 100: 14, 200: 12, 300: 10, 500: 8 },
+                1: { 100: 14, 200: 10, 300: 8, 500: 6 },
+                1.5: { 100: 12, 200: 10, 300: 8, 500: 6 },
+                2: { 100: 10, 200: 8, 300: 6, 500: 4 },
+                3: { 100: 10, 200: 8, 300: 6, 500: 4 },
+                5: { 100: 8, 200: 6, 300: 4, 500: 2 },
+                7.5: { 100: 6, 200: 4, 300: 2, 500: 1 },
+                10: { 100: 6, 200: 4, 300: 2, 500: '1/0' },
+            },
+            
+            // Control box type based on HP
+            controlBox: {
+                0.5: 'QD (2-wire)',
+                0.75: 'QD (2-wire)',
+                1: 'Standard 3-wire',
+                1.5: 'Standard 3-wire',
+                2: 'Standard 3-wire',
+                3: 'Standard 3-wire',
+                5: 'Standard 3-wire',
+                7.5: 'Magnetic Starter',
+                10: 'Magnetic Starter',
+                15: 'Magnetic Starter',
+                20: 'Magnetic Starter',
+            }
+        };
+        
+        // Multi-Brand Pump End Selection Data
+        // Goulds GS Series - Model suffix = HP (05=0.5HP, 07=0.75HP, 10=1HP, 15=1.5HP, 20=2HP, 30=3HP, 50=5HP)
+        // Each HP rating has a fixed number of stages providing specific TDH
+        const GOULDS_MODELS = {
+            // 5GS Series (5 GPM nominal, 3-7 GPM range) - ~27 ft/stage at BEP
+            '5GS': {
+                '05': { stages: 4, tdh: 107, hp: 0.5 },
+                '07': { stages: 6, tdh: 160, hp: 0.75 },
+                '10': { stages: 8, tdh: 214, hp: 1.0 },
+                '15': { stages: 12, tdh: 321, hp: 1.5 },
+                '20': { stages: 16, tdh: 428, hp: 2.0 },
+                '30': { stages: 24, tdh: 641, hp: 3.0 }
+            },
+            // 7GS Series (7 GPM nominal, 5-10 GPM range) - ~22 ft/stage at BEP
+            '7GS': {
+                '05': { stages: 5, tdh: 108, hp: 0.5 },
+                '07': { stages: 7, tdh: 151, hp: 0.75 },
+                '10': { stages: 9, tdh: 195, hp: 1.0 },
+                '15': { stages: 14, tdh: 303, hp: 1.5 },
+                '20': { stages: 18, tdh: 389, hp: 2.0 },
+                '30': { stages: 27, tdh: 584, hp: 3.0 }
+            },
+            // 10GS Series (10 GPM nominal, 7-15 GPM range) - ~19 ft/stage at BEP
+            '10GS': {
+                '05': { stages: 5, tdh: 95, hp: 0.5 },
+                '07': { stages: 7, tdh: 133, hp: 0.75 },
+                '10': { stages: 10, tdh: 190, hp: 1.0 },
+                '15': { stages: 15, tdh: 285, hp: 1.5 },
+                '20': { stages: 20, tdh: 380, hp: 2.0 },
+                '30': { stages: 30, tdh: 570, hp: 3.0 },
+                '50': { stages: 50, tdh: 950, hp: 5.0 }
+            },
+            // 13GS Series (13 GPM nominal, 10-18 GPM range) - ~15 ft/stage at BEP
+            '13GS': {
+                '05': { stages: 6, tdh: 91, hp: 0.5 },
+                '07': { stages: 9, tdh: 136, hp: 0.75 },
+                '10': { stages: 12, tdh: 181, hp: 1.0 },
+                '15': { stages: 18, tdh: 272, hp: 1.5 },
+                '20': { stages: 24, tdh: 362, hp: 2.0 },
+                '30': { stages: 36, tdh: 544, hp: 3.0 }
+            },
+            // 18GS Series (18 GPM nominal, 14-25 GPM range) - ~11 ft/stage at BEP
+            '18GS': {
+                '05': { stages: 7, tdh: 81, hp: 0.5 },
+                '07': { stages: 11, tdh: 127, hp: 0.75 },
+                '10': { stages: 15, tdh: 173, hp: 1.0 },
+                '15': { stages: 22, tdh: 254, hp: 1.5 },
+                '20': { stages: 30, tdh: 346, hp: 2.0 },
+                '30': { stages: 45, tdh: 519, hp: 3.0 }
+            },
+            // 25GS Series (25 GPM nominal, 20-35 GPM range) - ~9 ft/stage at BEP  
+            '25GS': {
+                '05': { stages: 8, tdh: 71, hp: 0.5 },
+                '10': { stages: 17, tdh: 150, hp: 1.0 },
+                '15': { stages: 25, tdh: 221, hp: 1.5 },
+                '20': { stages: 34, tdh: 301, hp: 2.0 },
+                '30': { stages: 50, tdh: 442, hp: 3.0 }
+            }
+        };
+        
+        const PUMP_BRANDS = {
+            goulds: {
+                name: 'Goulds',
+                color: '#1a5276',
+                models: {
+                    // 4" GS Series - Stainless Steel (using actual catalog specs)
+                    '5GS': { minGPM: 3, maxGPM: 7, minCasing: 4, series: 'GS', desc: '4" SS, 5 GPM nominal', useActualModels: true },
+                    '7GS': { minGPM: 5, maxGPM: 10, minCasing: 4, series: 'GS', desc: '4" SS, 7 GPM nominal', useActualModels: true },
+                    '10GS': { minGPM: 7, maxGPM: 15, minCasing: 4, series: 'GS', desc: '4" SS, 10 GPM nominal', useActualModels: true },
+                    '13GS': { minGPM: 10, maxGPM: 18, minCasing: 4, series: 'GS', desc: '4" SS, 13 GPM nominal', useActualModels: true },
+                    '18GS': { minGPM: 14, maxGPM: 25, minCasing: 4, series: 'GS', desc: '4" SS, 18 GPM nominal', useActualModels: true },
+                    '25GS': { minGPM: 20, maxGPM: 35, minCasing: 4, series: 'GS', desc: '4" SS, 25 GPM nominal', useActualModels: true },
+                    // Note: Goulds GS series maxes out at 25GS (35 GPM). For higher flows, use Grundfos SP or Franklin FPS.
+                }
+            },
+            grundfos: {
+                name: 'Grundfos',
+                color: '#e74c3c',
+                models: {
+                    // SQ/SQE Series - 3" variable speed submersible (fits 4" well)
+                    // Integrated motor with VFD - constant pressure capability
+                    'SQ 1-35': { minGPM: 1, maxGPM: 5, maxTDH: 330, hp: 0.5, minCasing: 4, series: 'SQ', desc: '3" VFD, constant pressure', integrated: true },
+                    'SQ 2-55': { minGPM: 2, maxGPM: 10, maxTDH: 540, hp: 1.0, minCasing: 4, series: 'SQ', desc: '3" VFD, constant pressure', integrated: true },
+                    'SQ 2-85': { minGPM: 2, maxGPM: 10, maxTDH: 840, hp: 1.5, minCasing: 4, series: 'SQ', desc: '3" VFD, constant pressure', integrated: true },
+                    'SQ 3-55': { minGPM: 5, maxGPM: 18, maxTDH: 350, hp: 1.5, minCasing: 4, series: 'SQ', desc: '3" VFD, constant pressure', integrated: true },
+                    'SQ 3-80': { minGPM: 5, maxGPM: 18, maxTDH: 530, hp: 2.0, minCasing: 4, series: 'SQ', desc: '3" VFD, constant pressure', integrated: true },
+                    'SQ 5-60': { minGPM: 10, maxGPM: 25, maxTDH: 340, hp: 2.0, minCasing: 4, series: 'SQ', desc: '3" VFD, constant pressure', integrated: true },
+                    'SQ 5-70': { minGPM: 10, maxGPM: 25, maxTDH: 400, hp: 3.0, minCasing: 4, series: 'SQ', desc: '3" VFD, constant pressure', integrated: true },
+                    'SQ 7-40': { minGPM: 15, maxGPM: 35, maxTDH: 240, hp: 3.0, minCasing: 4, series: 'SQ', desc: '3" VFD, constant pressure', integrated: true },
+                    // SP Series - 4" Industrial staged pumps (model format: SP {flow}-{stages})
+                    'SP 5A': { minGPM: 3, maxGPM: 8, headPerStage: 18.5, maxStages: 60, minCasing: 4, series: 'SP', desc: '4" SS, 5 GPM nominal' },
+                    'SP 8A': { minGPM: 5, maxGPM: 12, headPerStage: 14.8, maxStages: 55, minCasing: 4, series: 'SP', desc: '4" SS, 8 GPM nominal' },
+                    'SP 11': { minGPM: 8, maxGPM: 16, headPerStage: 11.5, maxStages: 50, minCasing: 4, series: 'SP', desc: '4" SS, 11 GPM nominal' },
+                    'SP 17': { minGPM: 12, maxGPM: 22, headPerStage: 9.2, maxStages: 45, minCasing: 4, series: 'SP', desc: '4" SS, 17 GPM nominal' },
+                    'SP 30': { minGPM: 22, maxGPM: 42, headPerStage: 7.0, maxStages: 40, minCasing: 6, series: 'SP', desc: '6" SS, 30 GPM nominal' },
+                    'SP 46': { minGPM: 35, maxGPM: 60, headPerStage: 5.2, maxStages: 35, minCasing: 6, series: 'SP', desc: '6" SS, 46 GPM nominal' },
+                    'SP 60': { minGPM: 45, maxGPM: 75, headPerStage: 4.4, maxStages: 32, minCasing: 6, series: 'SP', desc: '6" SS, 60 GPM nominal' },
+                    'SP 77': { minGPM: 55, maxGPM: 100, headPerStage: 3.8, maxStages: 30, minCasing: 6, series: 'SP', desc: '6" SS, 77 GPM nominal' },
+                    'SP 95': { minGPM: 70, maxGPM: 125, headPerStage: 3.2, maxStages: 28, minCasing: 6, series: 'SP', desc: '6" SS, 95 GPM nominal' },
+                }
+            },
+            franklin: {
+                name: 'Franklin (FPS)',
+                color: '#27ae60',
+                models: {
+                    // FPS 4400 Series - 4" Stainless Steel (actual model naming: 5FA, 7FA, 10FA, etc.)
+                    '5FA': { minGPM: 3, maxGPM: 8, headPerStage: 25.5, maxStages: 40, minCasing: 4, series: '4400', desc: '4" SS, 5 GPM nominal' },
+                    '7FA': { minGPM: 5, maxGPM: 10, headPerStage: 21.0, maxStages: 38, minCasing: 4, series: '4400', desc: '4" SS, 7 GPM nominal' },
+                    '10FA': { minGPM: 7, maxGPM: 15, headPerStage: 17.0, maxStages: 55, minCasing: 4, series: '4400', desc: '4" SS, 10 GPM nominal' },
+                    '15FA': { minGPM: 10, maxGPM: 20, headPerStage: 12.5, maxStages: 48, minCasing: 4, series: '4400', desc: '4" SS, 15 GPM nominal' },
+                    '22FA': { minGPM: 16, maxGPM: 28, headPerStage: 9.0, maxStages: 42, minCasing: 4, series: '4400', desc: '4" SS, 22 GPM nominal' },
+                    '25FA': { minGPM: 20, maxGPM: 32, headPerStage: 8.0, maxStages: 40, minCasing: 4, series: '4400', desc: '4" SS, 25 GPM nominal' },
+                    '33FA': { minGPM: 26, maxGPM: 42, headPerStage: 6.5, maxStages: 35, minCasing: 4, series: '4400', desc: '4" SS, 33 GPM nominal' },
+                    // FPS 6400 Series - 6" High Capacity
+                    '50FA': { minGPM: 40, maxGPM: 65, headPerStage: 6.8, maxStages: 30, minCasing: 6, series: '6400', desc: '6" SS, 50 GPM nominal' },
+                    '75FA': { minGPM: 60, maxGPM: 95, headPerStage: 5.2, maxStages: 26, minCasing: 6, series: '6400', desc: '6" SS, 75 GPM nominal' },
+                    '100FA': { minGPM: 80, maxGPM: 130, headPerStage: 4.0, maxStages: 24, minCasing: 6, series: '6400', desc: '6" SS, 100 GPM nominal' },
+                    '150FA': { minGPM: 120, maxGPM: 180, headPerStage: 3.2, maxStages: 20, minCasing: 8, series: '6400', desc: '8" SS, 150 GPM nominal' },
+                }
+            }
+        };
+        
+        function selectPumpEnds(gpm, tdh, casingDia) {
+            const results = {};
+            
+            for (const [brandKey, brand] of Object.entries(PUMP_BRANDS)) {
+                const candidates = [];
+                
+                for (const [model, specs] of Object.entries(brand.models)) {
+                    if (gpm >= specs.minGPM && gpm <= specs.maxGPM && casingDia >= specs.minCasing) {
+                        
+                        // Handle integrated pumps (Grundfos SQ/SQE) vs staged pumps
+                        if (specs.integrated) {
+                            if (tdh <= specs.maxTDH) {
+                                // Score: prefer models that match GPM well and have minimal excess TDH
+                                const gpmScore = Math.abs(gpm - (specs.minGPM + specs.maxGPM) / 2);
+                                const tdhScore = (specs.maxTDH - tdh) * 0.005; // Small penalty for excess TDH
+                                candidates.push({
+                                    model: model,
+                                    fullModel: model,
+                                    stages: null,
+                                    hp: specs.hp || null,
+                                    actualTDH: specs.maxTDH,
+                                    specs: specs,
+                                    score: gpmScore + tdhScore
+                                });
+                            }
+                        } else if (brandKey === 'goulds' && specs.useActualModels && GOULDS_MODELS[model]) {
+                            // Use actual Goulds catalog model lookup
+                            const modelSeries = GOULDS_MODELS[model];
+                            
+                            // Find the smallest model that meets the TDH requirement
+                            const hpCodes = Object.keys(modelSeries).sort((a, b) => parseFloat(a) - parseFloat(b));
+                            let bestMatch = null;
+                            
+                            for (const hpCode of hpCodes) {
+                                const modelSpec = modelSeries[hpCode];
+                                if (modelSpec.tdh >= tdh) {
+                                    bestMatch = { hpCode, ...modelSpec };
+                                    break;
+                                }
+                            }
+                            
+                            // If no exact match, use the largest available
+                            if (!bestMatch) {
+                                const lastCode = hpCodes[hpCodes.length - 1];
+                                const lastSpec = modelSeries[lastCode];
+                                if (lastSpec.tdh >= tdh * 0.85) { // Allow 15% deficit for borderline cases
+                                    bestMatch = { hpCode: lastCode, ...lastSpec, borderline: true };
+                                }
+                            }
+                            
+                            if (bestMatch) {
+                                candidates.push({
+                                    model: model,
+                                    stages: bestMatch.stages,
+                                    hp: bestMatch.hp,
+                                    fullModel: `${model}${bestMatch.hpCode}`,
+                                    actualTDH: bestMatch.tdh,
+                                    specs: specs,
+                                    borderline: bestMatch.borderline,
+                                    score: Math.abs(gpm - (specs.minGPM + specs.maxGPM) / 2) + (bestMatch.tdh - tdh) * 0.01
+                                });
+                            }
+                        } else if (specs.headPerStage) {
+                            // Generic staged pumps - calculate required stages
+                            const requiredStages = Math.ceil((tdh * 1.1) / specs.headPerStage);
+                            
+                            if (requiredStages <= specs.maxStages) {
+                                const actualTDH = requiredStages * specs.headPerStage;
+                                candidates.push({
+                                    model: model,
+                                    stages: requiredStages,
+                                    fullModel: `${model}${requiredStages.toString().padStart(2, '0')}`,
+                                    actualTDH: Math.round(actualTDH),
+                                    specs: specs,
+                                    score: Math.abs(gpm - (specs.minGPM + specs.maxGPM) / 2) + (requiredStages * 0.3)
+                                });
+                            }
+                        }
+                    }
+                }
+                
+                if (candidates.length > 0) {
+                    candidates.sort((a, b) => a.score - b.score);
+                    const best = candidates[0];
+                    
+                    let desc;
+                    if (best.specs.integrated) {
+                        // Grundfos SQ/SQE series - show HP and TDH
+                        const hpStr = best.specs.hp ? `, ${best.specs.hp} HP` : '';
+                        desc = `${best.specs.desc}${hpStr}, up to ${best.actualTDH} ft TDH`;
+                    } else if (best.hp) {
+                        desc = `${best.specs.desc} - ${best.stages} stg, ${best.hp} HP, ${best.actualTDH} ft TDH`;
+                        if (best.borderline) desc += ' (borderline)';
+                    } else {
+                        desc = `${best.specs.desc} - ${best.stages} stages for ${Math.round(best.actualTDH)} ft TDH`;
+                    }
+                    
+                    results[brandKey] = {
+                        brand: brand.name,
+                        color: brand.color,
+                        fullModel: best.fullModel,
+                        stages: best.stages,
+                        hp: best.hp,
+                        actualTDH: best.actualTDH,
+                        desc: desc,
+                        series: best.specs.series,
+                        borderline: best.borderline
+                    };
+                }
+            }
+            
+            return results;
+        }
+        
+        document.getElementById('pumpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculatePump();
+        });
+        
+        function calculatePump() {
+            // Get inputs
+            const wellDepth = parseFloat(document.getElementById('wellDepth').value);
+            const staticLevel = parseFloat(document.getElementById('staticLevel').value);
+            const drawdown = parseFloat(document.getElementById('drawdown').value);
+            const casingDia = parseFloat(document.getElementById('casingDia').value);
+            const flowRate = parseFloat(document.getElementById('flowRate').value);
+            const pressurePSI = parseFloat(document.getElementById('pressurePSI').value);
+            const elevation = parseFloat(document.getElementById('elevation').value) || 0;
+            const pipeLength = parseFloat(document.getElementById('pipeLength').value) || 100;
+            const voltage = document.getElementById('voltage').value;
+            
+            // Calculate TDH (Total Dynamic Head)
+            // TDH = Pumping Level + Pressure Head + Friction Loss + Elevation
+            const pumpingLevel = drawdown; // Depth to water while pumping
+            const pressureHead = pressurePSI * 2.31; // PSI to feet of head
+            const frictionLoss = calculateFrictionLoss(flowRate, pipeLength);
+            const elevationHead = elevation;
+            
+            const tdh = Math.round(pumpingLevel + pressureHead + frictionLoss + elevationHead);
+            
+            // Find appropriate pump
+            const pump = findPump(flowRate, tdh, casingDia);
+            
+            // Calculate wire size
+            const totalCableLength = wellDepth + 50; // Well depth + some surface run
+            const wireSize = getWireSize(pump.hp, totalCableLength);
+            
+            // Pump setting recommendation
+            const pumpSetting = Math.round(drawdown + 20); // Set pump 20ft below drawdown
+            
+            // Select pump ends from all brands
+            const pumpEnds = selectPumpEnds(flowRate, tdh, casingDia);
+            
+            // Display results
+            document.getElementById('tdhValue').textContent = tdh;
+            document.getElementById('hpValue').textContent = pump.hp + ' HP';
+            document.getElementById('motorSize').textContent = pump.motorDia;
+            document.getElementById('wireSize').textContent = '#' + wireSize + ' AWG';
+            document.getElementById('pumpSetting').textContent = pumpSetting + ' ft';
+            document.getElementById('estFlow').textContent = flowRate + ' GPM';
+            
+            // Display all pump end options
+            const pumpEndContainer = document.getElementById('pumpEndResults');
+            const brandOrder = ['goulds', 'grundfos', 'franklin'];
+            let pumpEndHTML = '';
+            let primaryPumpEnd = null;
+            
+            for (const brandKey of brandOrder) {
+                if (pumpEnds[brandKey]) {
+                    const pe = pumpEnds[brandKey];
+                    if (!primaryPumpEnd) primaryPumpEnd = pe;
+                    pumpEndHTML += `
+                        <div style="background: linear-gradient(135deg, ${pe.color} 0%, ${pe.color}dd 100%); color: white; padding: 18px 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                            <div>
+                                <div style="font-size: 12px; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px;">${pe.brand}</div>
+                                <div style="font-size: 24px; font-weight: 700; margin-top: 4px;">${pe.fullModel}</div>
+                            </div>
+                            <div style="text-align: right; font-size: 13px; opacity: 0.9; max-width: 250px;">
+                                ${pe.desc}
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            if (!pumpEndHTML) {
+                pumpEndHTML = '<div style="padding: 20px; background: #f8d7da; border-radius: 8px; color: #721c24;">No standard pump ends match this application. Contact us for custom sizing.</div>';
+            }
+            pumpEndContainer.innerHTML = pumpEndHTML;
+            
+            // Recommendation text
+            let recText = `Based on your well conditions (${flowRate} GPM at ${tdh} ft TDH), `;
+            if (primaryPumpEnd) {
+                recText += `we recommend the ${primaryPumpEnd.brand} ${primaryPumpEnd.fullModel}`;
+                if (Object.keys(pumpEnds).length > 1) {
+                    recText += ` or equivalent models from other brands shown above`;
+                }
+                recText += `. `;
+            }
+            recText += `Pair with a ${pump.hp} HP ${pump.motorDia} motor. `;
+            recText += `Set pump at approximately ${pumpSetting} feet for optimal performance.`;
+            document.getElementById('recText').textContent = recText;
+            
+            // Warnings
+            const warnings = [];
+            if (tdh > 700) {
+                warnings.push('High TDH application - consider VFD for soft start and energy savings');
+            }
+            if (casingDia < 6 && pump.hp >= 5) {
+                warnings.push('High HP in small casing may require flow sleeve for motor cooling');
+            }
+            if (pumpSetting > wellDepth - 20) {
+                warnings.push('Pump setting is close to well bottom - ensure adequate clearance');
+            }
+            if (drawdown > wellDepth * 0.8) {
+                warnings.push('High drawdown relative to well depth - well yield may be marginal');
+            }
+            if (pump.hp >= 7.5 && voltage === '230') {
+                warnings.push('Consider 3-phase power for motors 7.5 HP and larger');
+            }
+            // Check for 6" pump end with 4" motor warning
+            const has6inchPumpEnd = Object.values(pumpEnds).some(pe => pe.series === '6400' || pe.series === '6500' || pe.series === 'SP');
+            if (has6inchPumpEnd && pump.motorDia === '4"') {
+                warnings.push('Some recommended pump ends require 6" or larger motors - verify motor compatibility');
+            }
+            // Check for high stage count
+            const maxStages = Math.max(...Object.values(pumpEnds).map(pe => pe.stages || 0));
+            if (maxStages > 30) {
+                warnings.push('High stage count (' + maxStages + ') may require special consideration for shaft length and thrust bearing');
+            }
+            
+            const warningsDiv = document.getElementById('warnings');
+            const warningList = document.getElementById('warningList');
+            if (warnings.length > 0) {
+                warningList.innerHTML = warnings.map(w => `<li>${w}</li>`).join('');
+                warningsDiv.style.display = 'block';
+            } else {
+                warningsDiv.style.display = 'none';
+            }
+            
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function calculateFrictionLoss(gpm, pipeLength) {
+            // Simplified friction loss calculation
+            // Assumes 1.25" pipe for residential, 2" for commercial
+            const pipeDia = gpm > 30 ? 2 : 1.25;
+            // Hazen-Williams approximation (C=140 for PVC)
+            const velocity = (gpm * 0.321) / (Math.PI * Math.pow(pipeDia/2, 2));
+            const frictionPerFt = 0.002 * Math.pow(velocity, 1.85);
+            return Math.round(frictionPerFt * pipeLength);
+        }
+        
+        function findPump(gpm, tdh, casingDia) {
+            // Filter pumps that fit the casing
+            const motorFits = {
+                4: ['4"'],
+                5: ['4"'],
+                6: ['4"', '6"'],
+                8: ['4"', '6"', '8"'],
+                10: ['4"', '6"', '8"'],
+                12: ['4"', '6"', '8"'],
+            };
+            
+            const allowedMotors = motorFits[casingDia] || ['4"', '6"', '8"'];
+            
+            // Find best match
+            for (const pump of PUMP_DATA.sizeChart) {
+                if (gpm <= pump.maxGPM && tdh <= pump.maxTDH && allowedMotors.includes(pump.motorDia)) {
+                    return pump;
+                }
+            }
+            
+            // Default to largest if nothing matches
+            return { hp: 20, motorDia: '6"' };
+        }
+        
+        function getWireSize(hp, distance) {
+            const chart = PUMP_DATA.wireChart[hp];
+            if (!chart) return 6; // Default
+            
+            const distances = [100, 200, 300, 500];
+            for (let i = 0; i < distances.length; i++) {
+                if (distance <= distances[i]) {
+                    return chart[distances[i]];
+                }
+            }
+            return chart[500]; // Use largest wire for long runs
+        }
+    </script>
+    <script>
+        // Detect if embedded in app shell
+        if (window.self !== window.top) {
+            document.body.classList.add('embedded');
+        }
+    </script>
+</body>
+</html>

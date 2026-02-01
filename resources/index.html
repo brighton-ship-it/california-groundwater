@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Well Owner Resources - SoCal Groundwater</title>
+    <meta name="description" content="Guides, permit information, and resources for water well owners in Southern California. Learn about maintenance, regulations, and water quality testing.">
+    <link rel="canonical" href="https://socalgroundwater.com/resources/">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #333;
+            line-height: 1.7;
+        }
+        a { color: #2563eb; }
+        
+        .site-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 15px 20px;
+        }
+        .site-header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-logo { font-size: 1.2rem; font-weight: 700; color: white; text-decoration: none; }
+        .site-logo span { color: #60a5fa; }
+        .site-nav a { color: rgba(255,255,255,0.9); margin-left: 20px; font-size: 0.9rem; text-decoration: none; }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back-link { margin-bottom: 20px; }
+        .back-link a { color: #64748b; font-size: 0.9rem; text-decoration: none; }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 12px;
+        }
+        .page-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .page-header p { opacity: 0.9; }
+        
+        .resource-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .resource-section h2 {
+            color: #1e3a5f;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .resource-section h3 {
+            color: #334155;
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+        }
+        .resource-section p {
+            color: #475569;
+            margin-bottom: 12px;
+        }
+        .resource-section ul {
+            margin-left: 25px;
+            color: #475569;
+        }
+        .resource-section li { margin-bottom: 8px; }
+        
+        .permit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .permit-table th, .permit-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .permit-table th {
+            background: #f8fafc;
+            color: #1e3a5f;
+            font-weight: 600;
+        }
+        .permit-table a { text-decoration: none; }
+        
+        .external-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .external-link {
+            background: #f1f5f9;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1e3a5f;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .external-link:hover { background: #e2e8f0; }
+        .external-link small { display: block; color: #64748b; font-weight: normal; margin-top: 3px; }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cta-box h3 { margin-bottom: 10px; }
+        .cta-box p { opacity: 0.9; margin-bottom: 15px; }
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #16a34a;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        footer { text-align: center; padding: 30px 20px; color: #64748b; font-size: 0.85rem; }
+        footer a { color: #2563eb; }
+        
+        @media (max-width: 768px) {
+            .site-nav { display: none; }
+            .permit-table { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-header">
+        <div class="site-header-inner">
+            <a href="/" class="site-logo">💧 SoCal<span>Groundwater</span></a>
+            <nav class="site-nav">
+                <a href="/well-lookup/">Well Lookup</a>
+                <a href="/pump-calculator/">Pump Calculator</a>
+                <a href="/contractors/">Contractors</a>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="back-link"><a href="/">← Back to Home</a></div>
+        
+        <div class="page-header">
+            <h1>📚 Well Owner Resources</h1>
+            <p>Guides, permits, and information for private well owners</p>
+        </div>
+        
+        <div class="resource-section">
+            <h2>🏛️ Well Permits by County</h2>
+            <p>In California, you need a permit before drilling a new well or modifying an existing one. Contact your county's Environmental Health department:</p>
+            
+            <table class="permit-table">
+                <tr>
+                    <th>County</th>
+                    <th>Department</th>
+                    <th>Contact</th>
+                </tr>
+                <tr>
+                    <td>San Diego</td>
+                    <td>Dept. of Environmental Health</td>
+                    <td><a href="https://www.sandiegocounty.gov/content/sdc/deh/lwqd/lu_water_wells.html" target="_blank">Well Program →</a></td>
+                </tr>
+                <tr>
+                    <td>Riverside</td>
+                    <td>Environmental Health</td>
+                    <td><a href="https://www.rivcoeh.org/Programs/Wells" target="_blank">Well Program →</a></td>
+                </tr>
+                <tr>
+                    <td>San Bernardino</td>
+                    <td>Environmental Health Services</td>
+                    <td><a href="https://wp.sbcounty.gov/dph/programs/ehs/" target="_blank">EHS Website →</a></td>
+                </tr>
+            </table>
+            
+            <h3>Typical Permit Requirements</h3>
+            <ul>
+                <li>Site plan showing well location and setbacks</li>
+                <li>Septic system location (must be 100+ feet from well)</li>
+                <li>Property lines and easements</li>
+                <li>Application fee ($200-500 depending on county)</li>
+                <li>Licensed C-57 contractor information</li>
+            </ul>
+        </div>
+        
+        <div class="resource-section">
+            <h2>📏 Required Setback Distances</h2>
+            <p>California requires minimum distances between wells and potential contamination sources:</p>
+            <table class="permit-table">
+                <tr><th>From</th><th>Minimum Distance</th></tr>
+                <tr><td>Septic tank</td><td>50 feet</td></tr>
+                <tr><td>Septic leach field</td><td>100 feet</td></tr>
+                <tr><td>Property line</td><td>5 feet (varies)</td></tr>
+                <tr><td>Sewer line</td><td>50 feet</td></tr>
+                <tr><td>Animal enclosure</td><td>100 feet</td></tr>
+            </table>
+            <p style="margin-top:15px;font-size:0.9rem;color:#64748b;">Note: Local regulations may require greater distances. Always verify with your county.</p>
+        </div>
+        
+        <div class="resource-section">
+            <h2>🔧 Annual Maintenance Checklist</h2>
+            <p>Keep your well system running smoothly with these maintenance tasks:</p>
+            <ul>
+                <li><strong>Monthly:</strong> Check pressure tank (should be 2 PSI below cut-in pressure)</li>
+                <li><strong>Quarterly:</strong> Inspect wellhead for damage, cracks, or pest entry points</li>
+                <li><strong>Annually:</strong> Test water quality (bacteria, nitrates at minimum)</li>
+                <li><strong>Annually:</strong> Check pump performance (flow rate, pressure)</li>
+                <li><strong>Every 3-5 years:</strong> Have a professional inspect the well system</li>
+                <li><strong>As needed:</strong> Replace pressure switch, pressure gauge, or tank</li>
+            </ul>
+        </div>
+        
+        <div class="resource-section">
+            <h2>🧪 Water Quality Testing</h2>
+            <p>Private well owners are responsible for testing their own water. Recommended tests:</p>
+            <ul>
+                <li><strong>Coliform bacteria</strong> — Test annually (indicates contamination)</li>
+                <li><strong>Nitrates</strong> — Test annually (especially if near agriculture)</li>
+                <li><strong>pH and hardness</strong> — Baseline test for treatment planning</li>
+                <li><strong>Arsenic</strong> — Recommended in some areas of SoCal</li>
+                <li><strong>Full panel</strong> — Recommended when buying property or after well work</li>
+            </ul>
+            <p style="margin-top:15px;">Local labs for water testing:</p>
+            <div class="external-links">
+                <a href="https://www.babcocklabs.com/" target="_blank" class="external-link">
+                    Babcock Laboratories
+                    <small>Riverside — Full service lab</small>
+                </a>
+                <a href="https://www.sandiegocounty.gov/content/sdc/deh/fhd/ffis/water_testing.html" target="_blank" class="external-link">
+                    SD County Health
+                    <small>Basic bacteria testing</small>
+                </a>
+            </div>
+        </div>
+        
+        <div class="resource-section">
+            <h2>🌵 Drought Tips for Well Owners</h2>
+            <ul>
+                <li><strong>Monitor your water level</strong> — Note if the pump runs longer or water sputters</li>
+                <li><strong>Reduce usage</strong> — Fix leaks, use efficient fixtures, limit irrigation</li>
+                <li><strong>Space out heavy usage</strong> — Don't run multiple high-demand appliances simultaneously</li>
+                <li><strong>Consider storage</strong> — A storage tank can buffer low-yield wells</li>
+                <li><strong>Deepen if necessary</strong> — A contractor can often deepen an existing well</li>
+                <li><strong>Check pump setting</strong> — Ensure pump isn't set too shallow for current water levels</li>
+            </ul>
+        </div>
+        
+        <div class="resource-section">
+            <h2>🔗 Official Resources</h2>
+            <div class="external-links">
+                <a href="https://water.ca.gov/" target="_blank" class="external-link">
+                    CA Dept. of Water Resources
+                    <small>State water agency</small>
+                </a>
+                <a href="https://www.waterboards.ca.gov/" target="_blank" class="external-link">
+                    State Water Board
+                    <small>Water quality regulations</small>
+                </a>
+                <a href="https://wellowner.org/" target="_blank" class="external-link">
+                    WellOwner.org (NGWA)
+                    <small>Well owner education</small>
+                </a>
+                <a href="https://www.cslb.ca.gov/" target="_blank" class="external-link">
+                    CA Contractors License Board
+                    <small>Verify contractor licenses</small>
+                </a>
+            </div>
+        </div>
+        
+        <div class="cta-box">
+            <h3>Need Professional Help?</h3>
+            <p>Connect with a licensed well contractor for inspections, repairs, or new installations.</p>
+            <a href="/contractors/">Find a Contractor →</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2026 <a href="/">SoCal Groundwater</a> | A project by <a href="https://www.scwellservice.com" target="_blank">Southern California Well Service</a></p>
+    </footer>
+</body>
+</html>

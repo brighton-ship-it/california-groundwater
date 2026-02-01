@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoCal Groundwater - Water Well Resources for Southern California</title>
+    <meta name="description" content="Free water well resources for Southern California homeowners. Well depth lookup, pump sizing calculator, contractor directory, and permit information for San Diego, Riverside, and San Bernardino counties.">
+    <link rel="canonical" href="https://socalgroundwater.com/">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 0;
+        }
+        .nav-bar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo span { color: #60a5fa; }
+        nav a {
+            color: rgba(255,255,255,0.9);
+            margin-left: 25px;
+            font-size: 0.95rem;
+        }
+        nav a:hover { color: white; text-decoration: none; }
+        
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Tools Section */
+        .tools-section {
+            max-width: 1200px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background: #e0f2fe;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .tool-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #1e3a5f;
+        }
+        .tool-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .tool-card .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .tool-card .btn:hover { background: #1d4ed8; text-decoration: none; }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 30px 20px;
+            margin-bottom: 50px;
+        }
+        .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a5f;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            color: #1e3a5f;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        /* Counties Grid */
+        .counties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .county-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .county-card h3 {
+            font-size: 1.2rem;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .county-card ul {
+            list-style: none;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        .county-card li {
+            padding: 5px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .county-card li:last-child { border-bottom: none; }
+        
+        /* Featured Contractor */
+        .featured-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 50px 20px;
+            margin-bottom: 50px;
+        }
+        .featured-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .featured-inner h2 {
+            font-size: 1.5rem;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+        }
+        .featured-inner p {
+            color: #475569;
+            margin-bottom: 25px;
+        }
+        .featured-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: inline-block;
+            text-align: left;
+            max-width: 500px;
+        }
+        .featured-card h3 {
+            font-size: 1.3rem;
+            color: #1e3a5f;
+            margin-bottom: 5px;
+        }
+        .featured-card .tagline {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .featured-card .details {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        .featured-card .details p {
+            margin: 8px 0;
+        }
+        .featured-card .cta {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        .featured-card .cta:hover { background: #15803d; text-decoration: none; }
+        
+        /* Footer */
+        footer {
+            background: #1e3a5f;
+            color: rgba(255,255,255,0.8);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        footer a { color: #60a5fa; }
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            margin: 0 15px;
+            color: rgba(255,255,255,0.8);
+        }
+        .disclaimer {
+            font-size: 0.85rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1rem; }
+            nav { display: none; }
+            .stats-inner { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+            <div class="logo">💧 SoCal<span>Groundwater</span></div>
+            <nav>
+                <a href="/well-lookup/">Well Lookup</a>
+                <a href="/pump-calculator/">Pump Calculator</a>
+                <a href="/contractors/">Find Contractors</a>
+                <a href="/resources/">Resources</a>
+            </nav>
+        </div>
+        <div class="hero">
+            <h1>Water Well Resources for Southern California</h1>
+            <p>Free tools and information for homeowners with private wells in San Diego, Riverside, and San Bernardino counties.</p>
+        </div>
+    </header>
+    
+    <section class="tools-section">
+        <div class="tool-card">
+            <div class="tool-icon">🔍</div>
+            <h3>Well Depth Lookup</h3>
+            <p>Search 75,000+ well records from the California DWR database. Find typical depths in your area before drilling.</p>
+            <a href="/well-lookup/" class="btn">Search Wells →</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">⚙️</div>
+            <h3>Pump Sizing Calculator</h3>
+            <p>Calculate the right pump size based on your well depth, water demand, and plumbing configuration.</p>
+            <a href="/pump-calculator/" class="btn">Size Your Pump →</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">👷</div>
+            <h3>Find a Contractor</h3>
+            <p>Licensed well drilling and pump service contractors serving Southern California communities.</p>
+            <a href="/contractors/" class="btn">View Directory →</a>
+        </div>
+    </section>
+    
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat">
+                <div class="stat-num">75,000+</div>
+                <div class="stat-label">Well Records</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">3</div>
+                <div class="stat-label">Counties Covered</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Free to Use</div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="content-section">
+        <h2 class="section-title">Coverage Area</h2>
+        <div class="counties-grid">
+            <div class="county-card">
+                <h3>📍 San Diego County</h3>
+                <ul>
+                    <li>Ramona, Julian, Alpine</li>
+                    <li>Valley Center, Escondido</li>
+                    <li>Fallbrook, Bonsall, Pauma Valley</li>
+                    <li>Jamul, Dulzura, Campo</li>
+                    <li>Borrego Springs, Warner Springs</li>
+                </ul>
+            </div>
+            <div class="county-card">
+                <h3>📍 Riverside County</h3>
+                <ul>
+                    <li>Temecula, Murrieta, Menifee</li>
+                    <li>Hemet, San Jacinto, Anza</li>
+                    <li>Aguanga, Sage, Winchester</li>
+                    <li>Idyllwild, Mountain Center</li>
+                    <li>Banning, Beaumont, Cherry Valley</li>
+                </ul>
+            </div>
+            <div class="county-card">
+                <h3>📍 San Bernardino County</h3>
+                <ul>
+                    <li>Apple Valley, Hesperia, Victorville</li>
+                    <li>Yucca Valley, Joshua Tree</li>
+                    <li>Big Bear, Lake Arrowhead</li>
+                    <li>Twentynine Palms, Morongo Valley</li>
+                    <li>Phelan, Wrightwood, Oak Glen</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="featured-section">
+        <div class="featured-inner">
+            <h2>Featured Contractor</h2>
+            <p>Trusted professionals serving Southern California for over 20 years</p>
+            <div class="featured-card">
+                <h3>Southern California Well Service</h3>
+                <p class="tagline">Water Well Drilling & Pump Specialists</p>
+                <div class="details">
+                    <p>📍 Ramona, CA — Serving all of SoCal</p>
+                    <p>📞 (760) 440-8520</p>
+                    <p>🔧 Drilling • Pump Repair • Water Systems</p>
+                    <p>⭐ Licensed C-57 Contractor</p>
+                </div>
+                <a href="https://www.scwellservice.com" class="cta" target="_blank">Visit Website →</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <h2 class="section-title">Quick Resources</h2>
+        <div class="counties-grid">
+            <div class="county-card">
+                <h3>📋 Permits & Regulations</h3>
+                <ul>
+                    <li><a href="/resources/permits/">Well Permit Requirements by County</a></li>
+                    <li><a href="/resources/setbacks/">Required Setback Distances</a></li>
+                    <li><a href="/resources/testing/">Water Quality Testing Info</a></li>
+                </ul>
+            </div>
+            <div class="county-card">
+                <h3>📚 Well Owner Guides</h3>
+                <ul>
+                    <li><a href="/resources/maintenance/">Annual Maintenance Checklist</a></li>
+                    <li><a href="/resources/pump-problems/">Common Pump Problems</a></li>
+                    <li><a href="/resources/drought/">Drought Tips for Well Owners</a></li>
+                </ul>
+            </div>
+            <div class="county-card">
+                <h3>🔗 Official Links</h3>
+                <ul>
+                    <li><a href="https://water.ca.gov/" target="_blank">CA Dept of Water Resources</a></li>
+                    <li><a href="https://www.waterboards.ca.gov/" target="_blank">State Water Board</a></li>
+                    <li><a href="https://www.wellowner.org/" target="_blank">WellOwner.org (NGWA)</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="/well-lookup/">Well Lookup</a>
+            <a href="/pump-calculator/">Pump Calculator</a>
+            <a href="/contractors/">Contractors</a>
+            <a href="/resources/">Resources</a>
+            <a href="/about/">About</a>
+        </div>
+        <p class="disclaimer">
+            SoCal Groundwater is a free community resource. Well data is sourced from the California Department of Water Resources well completion reports and is provided for informational purposes only. Always consult a licensed professional for well drilling and pump installation.
+        </p>
+        <p style="margin-top: 15px; font-size: 0.85rem;">
+            © 2026 SoCal Groundwater | <a href="https://www.scwellservice.com">A project by Southern California Well Service</a>
+        </p>
+    </footer>
+</body>
+</html>

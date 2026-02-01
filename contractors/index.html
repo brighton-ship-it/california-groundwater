@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Well Contractor - SoCal Groundwater</title>
+    <meta name="description" content="Licensed water well drilling and pump service contractors in Southern California. Find trusted professionals for well drilling, pump repair, and water systems in San Diego, Riverside, and San Bernardino counties.">
+    <link rel="canonical" href="https://socalgroundwater.com/contractors/">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #333;
+            line-height: 1.6;
+        }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        .site-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 15px 20px;
+        }
+        .site-header-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+        }
+        .site-logo span { color: #60a5fa; }
+        .site-nav a {
+            color: rgba(255,255,255,0.9);
+            margin-left: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 12px;
+        }
+        .page-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .page-header p { opacity: 0.9; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        
+        .back-link { margin-bottom: 20px; }
+        .back-link a { color: #64748b; font-size: 0.9rem; }
+        
+        /* Featured Contractor */
+        .featured-contractor {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 25px;
+            background: #10b981;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .featured-contractor h2 {
+            font-size: 1.5rem;
+            color: #064e3b;
+            margin-bottom: 5px;
+        }
+        .featured-contractor .tagline {
+            color: #047857;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .featured-info p {
+            margin: 10px 0;
+            color: #065f46;
+        }
+        .featured-info strong { color: #064e3b; }
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .service-tag {
+            background: #10b981;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+        .featured-cta {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .featured-cta a {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .cta-primary {
+            background: #10b981;
+            color: white;
+        }
+        .cta-primary:hover { background: #059669; }
+        .cta-secondary {
+            background: white;
+            color: #10b981;
+            border: 2px solid #10b981;
+        }
+        .cta-secondary:hover { background: #ecfdf5; }
+        
+        /* Other Contractors Section */
+        .section-title {
+            font-size: 1.3rem;
+            color: #1e3a5f;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .contractor-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .contractor-card h3 {
+            font-size: 1.2rem;
+            color: #1e3a5f;
+            margin-bottom: 5px;
+        }
+        .contractor-card .location {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .contractor-card .details {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+        .contractor-card .details p { margin: 6px 0; }
+        
+        /* Tips Section */
+        .tips-section {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        .tips-section h3 {
+            color: #1e3a5f;
+            margin-bottom: 15px;
+        }
+        .tips-section ul {
+            list-style: none;
+            color: #475569;
+        }
+        .tips-section li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .tips-section li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        /* CTA */
+        .list-cta {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .list-cta h3 { margin-bottom: 10px; }
+        .list-cta p { opacity: 0.9; margin-bottom: 15px; }
+        .list-cta a {
+            display: inline-block;
+            background: white;
+            color: #1e3a5f;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        footer { text-align: center; padding: 30px 20px; color: #64748b; font-size: 0.85rem; }
+        footer a { color: #2563eb; }
+        
+        @media (max-width: 768px) {
+            .featured-grid { grid-template-columns: 1fr; }
+            .site-nav { display: none; }
+            .featured-cta { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-header">
+        <div class="site-header-inner">
+            <a href="/" class="site-logo">💧 SoCal<span>Groundwater</span></a>
+            <nav class="site-nav">
+                <a href="/well-lookup/">Well Lookup</a>
+                <a href="/pump-calculator/">Pump Calculator</a>
+                <a href="/contractors/">Contractors</a>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="back-link"><a href="/">← Back to Home</a></div>
+        
+        <div class="page-header">
+            <h1>👷 Find a Well Contractor</h1>
+            <p>Licensed water well drilling and pump service professionals serving Southern California</p>
+        </div>
+        
+        <!-- Featured Contractor - SCWS -->
+        <div class="featured-contractor">
+            <span class="featured-badge">⭐ Featured Contractor</span>
+            <h2>Southern California Well Service</h2>
+            <p class="tagline">Water Well Drilling & Pump Specialists Since 2003</p>
+            
+            <div class="featured-grid">
+                <div class="featured-info">
+                    <p><strong>📍 Location:</strong> Ramona, CA</p>
+                    <p><strong>📞 Phone:</strong> <a href="tel:7604408520">(760) 440-8520</a></p>
+                    <p><strong>🌐 Website:</strong> <a href="https://www.scwellservice.com" target="_blank">scwellservice.com</a></p>
+                    <p><strong>📧 Email:</strong> <a href="mailto:brighton@scwellservice.com">brighton@scwellservice.com</a></p>
+                </div>
+                <div class="featured-info">
+                    <p><strong>🔧 License:</strong> C-57 Water Well Contractor</p>
+                    <p><strong>📍 Service Area:</strong> San Diego, Riverside & San Bernardino Counties</p>
+                    <p><strong>⏰ Hours:</strong> Mon-Fri 7am-5pm, Emergency Available</p>
+                </div>
+            </div>
+            
+            <div class="services-list">
+                <span class="service-tag">Well Drilling</span>
+                <span class="service-tag">Pump Installation</span>
+                <span class="service-tag">Pump Repair</span>
+                <span class="service-tag">Water Storage</span>
+                <span class="service-tag">Pressure Systems</span>
+                <span class="service-tag">Well Rehabilitation</span>
+                <span class="service-tag">Water Testing</span>
+            </div>
+            
+            <div class="featured-cta">
+                <a href="tel:7604408520" class="cta-primary">📞 Call Now</a>
+                <a href="https://www.scwellservice.com/request-quote" class="cta-secondary" target="_blank">Request Free Quote →</a>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Other Contractors in the Area</h2>
+        
+        <div class="contractor-card">
+            <h3>Want to be listed here?</h3>
+            <p class="location">Southern California</p>
+            <div class="details">
+                <p>We're building a directory of trusted well contractors in the region. If you're a licensed C-57 contractor serving San Diego, Riverside, or San Bernardino counties, contact us to be included.</p>
+            </div>
+        </div>
+        
+        <!-- Tips for hiring -->
+        <div class="tips-section">
+            <h3>💡 Tips for Hiring a Well Contractor</h3>
+            <ul>
+                <li><strong>Verify licensing</strong> — All well drillers in California must hold a C-57 Water Well Contractor license. Check at <a href="https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx" target="_blank">CSLB.ca.gov</a></li>
+                <li><strong>Get multiple quotes</strong> — Prices can vary significantly. Get at least 2-3 written estimates.</li>
+                <li><strong>Ask about experience</strong> — Local experience matters. Contractors familiar with your area know the geology.</li>
+                <li><strong>Check insurance</strong> — Ensure they carry liability insurance and workers' compensation.</li>
+                <li><strong>Request references</strong> — A reputable contractor will happily provide recent customer references.</li>
+                <li><strong>Understand the contract</strong> — Know what's included: permits, casing, pump, electrical, etc.</li>
+                <li><strong>Ask about warranties</strong> — Understand what's covered and for how long.</li>
+            </ul>
+        </div>
+        
+        <div class="list-cta">
+            <h3>Are You a Licensed Well Contractor?</h3>
+            <p>Get listed in our directory and reach homeowners searching for well services.</p>
+            <a href="mailto:info@socalgroundwater.com?subject=Contractor%20Listing%20Request">Request Listing →</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2026 <a href="/">SoCal Groundwater</a> | A project by <a href="https://www.scwellservice.com" target="_blank">Southern California Well Service</a></p>
+    </footer>
+</body>
+</html>
