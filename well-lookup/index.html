@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Well Depth Lookup - SoCal Groundwater</title>
+    <title>Well Depth Lookup - California Groundwater</title>
     <meta name="description" content="Search 75,000+ California well records to find typical well depths in your area. Free tool for homeowners planning a new well in San Diego, Riverside, or San Bernardino counties.">
-    <link rel="canonical" href="https://socalgroundwater.com/well-lookup/">
+    <link rel="canonical" href="https://california-groundwater.org/well-lookup/">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -137,7 +137,7 @@
 <body>
     <div class="site-header">
         <div class="site-header-inner">
-            <a href="/" class="site-logo">💧 SoCal<span>Groundwater</span></a>
+            <a href="/" class="site-logo">💧 California<span>Groundwater</span></a>
             <nav class="site-nav">
                 <a href="/well-lookup/">Well Lookup</a>
                 <a href="/pump-calculator/">Pump Calculator</a>
@@ -179,7 +179,7 @@
     
     <footer>
         <p>Data sourced from <a href="https://water.ca.gov/" target="_blank">California Department of Water Resources</a> well completion reports.</p>
-        <p style="margin-top: 8px;">© 2026 <a href="/">SoCal Groundwater</a> | A project by <a href="https://www.scwellservice.com" target="_blank">Southern California Well Service</a></p>
+        <p style="margin-top: 8px;">© 2026 <a href="/">California Groundwater</a> | A project by <a href="https://www.scwellservice.com" target="_blank">Southern California Well Service</a></p>
     </footer>
 
     <script>
@@ -234,7 +234,7 @@
         
         async function geocode(address) {
             const params = new URLSearchParams({ q: address, format: 'json', limit: 1, countrycodes: 'us' });
-            const resp = await fetch(`${NOMINATIM_API}?${params}`, { headers: { 'User-Agent': 'SoCalGroundwater/1.0' } });
+            const resp = await fetch(`${NOMINATIM_API}?${params}`, { headers: { 'User-Agent': 'CaliforniaGroundwater/1.0' } });
             let data = await resp.json();
             let fallback = false;
             
@@ -243,7 +243,7 @@
                 const zipCode = allZips ? allZips[allZips.length - 1] : null;
                 if (zipCode) {
                     const zipParams = new URLSearchParams({ q: zipCode, format: 'json', limit: 1, countrycodes: 'us' });
-                    const zipResp = await fetch(`${NOMINATIM_API}?${zipParams}`, { headers: { 'User-Agent': 'SoCalGroundwater/1.0' } });
+                    const zipResp = await fetch(`${NOMINATIM_API}?${zipParams}`, { headers: { 'User-Agent': 'CaliforniaGroundwater/1.0' } });
                     data = await zipResp.json();
                     if (data.length) fallback = true;
                 }
@@ -260,7 +260,7 @@
                 for (const city of knownCities) {
                     if (lowerAddr.includes(city)) {
                         const cityParams = new URLSearchParams({ q: `${city}, CA`, format: 'json', limit: 1, countrycodes: 'us' });
-                        const cityResp = await fetch(`${NOMINATIM_API}?${cityParams}`, { headers: { 'User-Agent': 'SoCalGroundwater/1.0' } });
+                        const cityResp = await fetch(`${NOMINATIM_API}?${cityParams}`, { headers: { 'User-Agent': 'CaliforniaGroundwater/1.0' } });
                         data = await cityResp.json();
                         if (data.length) { fallback = true; break; }
                     }
