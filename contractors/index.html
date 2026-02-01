@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find a Well Contractor - California Groundwater</title>
-    <meta name="description" content="Licensed water well drilling and pump service contractors in Southern California. Find trusted professionals for well drilling, pump repair, and water systems in San Diego, Riverside, and San Bernardino counties.">
+    <meta name="description" content="Licensed C-57 water well drilling and pump service contractors across California. Find trusted professionals for well drilling, pump repair, and water systems.">
     <link rel="canonical" href="https://california-groundwater.org/contractors/">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,118 +29,108 @@
             justify-content: space-between;
             align-items: center;
         }
-        .site-logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: white;
-        }
+        .site-logo { font-size: 1.2rem; font-weight: 700; color: white; text-decoration: none; }
         .site-logo span { color: #60a5fa; }
-        .site-nav a {
-            color: rgba(255,255,255,0.9);
-            margin-left: 20px;
-            font-size: 0.9rem;
-        }
+        .site-nav a { color: rgba(255,255,255,0.9); margin-left: 20px; font-size: 0.9rem; text-decoration: none; }
         
         .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         
         .page-header {
             background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
             color: white;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
             margin-bottom: 30px;
-            border-radius: 12px;
+            border-radius: 16px;
         }
-        .page-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .page-header h1 { font-size: 2.2rem; margin-bottom: 10px; }
         .page-header p { opacity: 0.9; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
         
         .back-link { margin-bottom: 20px; }
-        .back-link a { color: #64748b; font-size: 0.9rem; }
+        .back-link a { color: #64748b; font-size: 0.9rem; text-decoration: none; }
         
         /* Featured Contractor */
         .featured-contractor {
             background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
             border: 2px solid #10b981;
-            border-radius: 16px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 35px;
             margin-bottom: 30px;
             position: relative;
         }
         .featured-badge {
             position: absolute;
-            top: -12px;
-            left: 25px;
-            background: #10b981;
+            top: -14px;
+            left: 30px;
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
         }
         .featured-contractor h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #064e3b;
             margin-bottom: 5px;
         }
         .featured-contractor .tagline {
             color: #047857;
-            font-size: 1rem;
-            margin-bottom: 20px;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
         }
         .featured-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 25px;
         }
         .featured-info p {
-            margin: 10px 0;
+            margin: 12px 0;
             color: #065f46;
+            font-size: 0.95rem;
         }
         .featured-info strong { color: #064e3b; }
         .services-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
         }
         .service-tag {
-            background: #10b981;
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
+            padding: 6px 14px;
+            border-radius: 20px;
             font-size: 0.85rem;
+            font-weight: 500;
         }
         .featured-cta {
-            margin-top: 25px;
+            margin-top: 30px;
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
         .featured-cta a {
             display: inline-block;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
             font-weight: 600;
             text-decoration: none;
+            transition: transform 0.1s;
         }
-        .cta-primary {
-            background: #10b981;
-            color: white;
-        }
-        .cta-primary:hover { background: #059669; }
-        .cta-secondary {
-            background: white;
-            color: #10b981;
-            border: 2px solid #10b981;
-        }
-        .cta-secondary:hover { background: #ecfdf5; }
+        .featured-cta a:hover { transform: scale(1.02); }
+        .cta-primary { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .cta-secondary { background: white; color: #10b981; border: 2px solid #10b981; }
         
-        /* Other Contractors Section */
-        .section-title {
-            font-size: 1.3rem;
+        /* Region Sections */
+        .region-section {
+            margin-bottom: 40px;
+        }
+        .region-title {
+            font-size: 1.4rem;
             color: #1e3a5f;
-            margin: 30px 0 20px;
-            padding-bottom: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
             border-bottom: 2px solid #e2e8f0;
         }
         
@@ -148,80 +138,121 @@
             background: white;
             border-radius: 12px;
             padding: 25px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .contractor-card h3 {
-            font-size: 1.2rem;
+        .contractor-card .info h3 {
+            font-size: 1.15rem;
             color: #1e3a5f;
             margin-bottom: 5px;
         }
-        .contractor-card .location {
+        .contractor-card .info .location {
             color: #64748b;
             font-size: 0.9rem;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
-        .contractor-card .details {
+        .contractor-card .info .services {
             color: #475569;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
-        .contractor-card .details p { margin: 6px 0; }
+        .contractor-card .contact {
+            text-align: right;
+        }
+        .contractor-card .contact .phone {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+        .contractor-card .contact .website {
+            font-size: 0.85rem;
+            color: #2563eb;
+        }
+        
+        .empty-region {
+            background: #f8fafc;
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            color: #64748b;
+        }
+        .empty-region h4 { color: #475569; margin-bottom: 10px; }
         
         /* Tips Section */
         .tips-section {
-            background: #f1f5f9;
-            border-radius: 12px;
-            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
             margin-top: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         }
         .tips-section h3 {
             color: #1e3a5f;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
         }
-        .tips-section ul {
-            list-style: none;
-            color: #475569;
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-        .tips-section li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
+        .tip-item {
+            display: flex;
+            gap: 15px;
         }
-        .tips-section li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: bold;
+        .tip-icon {
+            width: 40px;
+            height: 40px;
+            background: #e0f2fe;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .tip-item h4 {
+            color: #1e3a5f;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .tip-item p {
+            color: #64748b;
+            font-size: 0.85rem;
         }
         
         /* CTA */
         .list-cta {
             background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
             color: white;
-            padding: 30px;
-            border-radius: 12px;
+            padding: 40px;
+            border-radius: 16px;
             text-align: center;
             margin-top: 40px;
         }
-        .list-cta h3 { margin-bottom: 10px; }
-        .list-cta p { opacity: 0.9; margin-bottom: 15px; }
+        .list-cta h3 { margin-bottom: 10px; font-size: 1.5rem; }
+        .list-cta p { opacity: 0.9; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; }
         .list-cta a {
             display: inline-block;
             background: white;
             color: #1e3a5f;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 14px 30px;
+            border-radius: 10px;
             font-weight: 600;
+            text-decoration: none;
         }
         
-        footer { text-align: center; padding: 30px 20px; color: #64748b; font-size: 0.85rem; }
+        footer { text-align: center; padding: 40px 20px; color: #64748b; font-size: 0.85rem; }
         footer a { color: #2563eb; }
         
         @media (max-width: 768px) {
             .featured-grid { grid-template-columns: 1fr; }
             .site-nav { display: none; }
             .featured-cta { flex-direction: column; }
+            .contractor-card { flex-direction: column; text-align: center; gap: 15px; }
+            .contractor-card .contact { text-align: center; }
         }
     </style>
 </head>
@@ -242,26 +273,26 @@
         
         <div class="page-header">
             <h1>👷 Find a Well Contractor</h1>
-            <p>Licensed water well drilling and pump service professionals serving Southern California</p>
+            <p>Licensed C-57 water well drilling and pump service professionals across California</p>
         </div>
         
         <!-- Featured Contractor - SCWS -->
         <div class="featured-contractor">
             <span class="featured-badge">⭐ Featured Contractor</span>
             <h2>Southern California Well Service</h2>
-            <p class="tagline">Water Well Drilling & Pump Specialists Since 2003</p>
+            <p class="tagline">Water Well Drilling & Pump Specialists — Serving SoCal Since 2003</p>
             
             <div class="featured-grid">
                 <div class="featured-info">
                     <p><strong>📍 Location:</strong> Ramona, CA</p>
-                    <p><strong>📞 Phone:</strong> <a href="tel:7604408520">(760) 440-8520</a></p>
-                    <p><strong>🌐 Website:</strong> <a href="https://www.scwellservice.com" target="_blank">scwellservice.com</a></p>
-                    <p><strong>📧 Email:</strong> <a href="mailto:brighton@scwellservice.com">brighton@scwellservice.com</a></p>
+                    <p><strong>📞 Phone:</strong> <a href="tel:7604408520" style="color:#065f46">(760) 440-8520</a></p>
+                    <p><strong>🌐 Website:</strong> <a href="https://www.scwellservice.com" target="_blank" style="color:#065f46">scwellservice.com</a></p>
+                    <p><strong>📧 Email:</strong> <a href="mailto:brighton@scwellservice.com" style="color:#065f46">brighton@scwellservice.com</a></p>
                 </div>
                 <div class="featured-info">
                     <p><strong>🔧 License:</strong> C-57 Water Well Contractor</p>
                     <p><strong>📍 Service Area:</strong> San Diego, Riverside & San Bernardino Counties</p>
-                    <p><strong>⏰ Hours:</strong> Mon-Fri 7am-5pm, Emergency Available</p>
+                    <p><strong>⏰ Availability:</strong> Mon-Fri 7am-5pm, 24/7 Emergency</p>
                 </div>
             </div>
             
@@ -273,42 +304,111 @@
                 <span class="service-tag">Pressure Systems</span>
                 <span class="service-tag">Well Rehabilitation</span>
                 <span class="service-tag">Water Testing</span>
+                <span class="service-tag">Video Inspection</span>
             </div>
             
             <div class="featured-cta">
                 <a href="tel:7604408520" class="cta-primary">📞 Call Now</a>
-                <a href="https://www.scwellservice.com/request-quote" class="cta-secondary" target="_blank">Request Free Quote →</a>
+                <a href="https://www.scwellservice.com" class="cta-secondary" target="_blank">Visit Website →</a>
             </div>
         </div>
         
-        <h2 class="section-title">Other Contractors in the Area</h2>
+        <!-- Southern California Region -->
+        <div class="region-section">
+            <h2 class="region-title">🌴 Southern California</h2>
+            <div class="contractor-card">
+                <div class="info">
+                    <h3>Southern California Well Service</h3>
+                    <p class="location">📍 Ramona, CA — San Diego, Riverside, San Bernardino</p>
+                    <p class="services">Well Drilling • Pump Service • Water Systems</p>
+                </div>
+                <div class="contact">
+                    <p class="phone">(760) 440-8520</p>
+                    <a href="https://www.scwellservice.com" class="website" target="_blank">scwellservice.com</a>
+                </div>
+            </div>
+        </div>
         
-        <div class="contractor-card">
-            <h3>Want to be listed here?</h3>
-            <p class="location">Southern California</p>
-            <div class="details">
-                <p>We're building a directory of trusted well contractors in the region. If you're a licensed C-57 contractor serving San Diego, Riverside, or San Bernardino counties, contact us to be included.</p>
+        <!-- Central Valley -->
+        <div class="region-section">
+            <h2 class="region-title">🌾 Central Valley</h2>
+            <div class="empty-region">
+                <h4>Contractors Wanted</h4>
+                <p>Are you a licensed C-57 contractor serving the Central Valley? <a href="mailto:info@california-groundwater.org?subject=Contractor%20Listing%20-%20Central%20Valley">Get listed for free →</a></p>
+            </div>
+        </div>
+        
+        <!-- Northern California -->
+        <div class="region-section">
+            <h2 class="region-title">🌲 Northern California</h2>
+            <div class="empty-region">
+                <h4>Contractors Wanted</h4>
+                <p>Are you a licensed C-57 contractor serving Northern California? <a href="mailto:info@california-groundwater.org?subject=Contractor%20Listing%20-%20Northern%20California">Get listed for free →</a></p>
+            </div>
+        </div>
+        
+        <!-- Central Coast -->
+        <div class="region-section">
+            <h2 class="region-title">🍇 Central Coast</h2>
+            <div class="empty-region">
+                <h4>Contractors Wanted</h4>
+                <p>Are you a licensed C-57 contractor serving the Central Coast? <a href="mailto:info@california-groundwater.org?subject=Contractor%20Listing%20-%20Central%20Coast">Get listed for free →</a></p>
             </div>
         </div>
         
         <!-- Tips for hiring -->
         <div class="tips-section">
             <h3>💡 Tips for Hiring a Well Contractor</h3>
-            <ul>
-                <li><strong>Verify licensing</strong> — All well drillers in California must hold a C-57 Water Well Contractor license. Check at <a href="https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx" target="_blank">CSLB.ca.gov</a></li>
-                <li><strong>Get multiple quotes</strong> — Prices can vary significantly. Get at least 2-3 written estimates.</li>
-                <li><strong>Ask about experience</strong> — Local experience matters. Contractors familiar with your area know the geology.</li>
-                <li><strong>Check insurance</strong> — Ensure they carry liability insurance and workers' compensation.</li>
-                <li><strong>Request references</strong> — A reputable contractor will happily provide recent customer references.</li>
-                <li><strong>Understand the contract</strong> — Know what's included: permits, casing, pump, electrical, etc.</li>
-                <li><strong>Ask about warranties</strong> — Understand what's covered and for how long.</li>
-            </ul>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <div class="tip-icon">📋</div>
+                    <div>
+                        <h4>Verify Licensing</h4>
+                        <p>All CA well drillers must hold a C-57 license. Check at <a href="https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx" target="_blank">CSLB.ca.gov</a></p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">💰</div>
+                    <div>
+                        <h4>Get Multiple Quotes</h4>
+                        <p>Prices vary significantly. Get 2-3 written estimates before deciding.</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">🗺️</div>
+                    <div>
+                        <h4>Local Experience</h4>
+                        <p>Contractors familiar with your area know the geology and typical depths.</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">🛡️</div>
+                    <div>
+                        <h4>Check Insurance</h4>
+                        <p>Ensure they carry liability insurance and workers' compensation.</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">⭐</div>
+                    <div>
+                        <h4>Request References</h4>
+                        <p>A good contractor will happily provide recent customer references.</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">📝</div>
+                    <div>
+                        <h4>Understand the Contract</h4>
+                        <p>Know what's included: permits, casing, pump, electrical, warranty.</p>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="list-cta">
             <h3>Are You a Licensed Well Contractor?</h3>
-            <p>Get listed in our directory and reach homeowners searching for well services.</p>
-            <a href="mailto:info@california-groundwater.org?subject=Contractor%20Listing%20Request">Request Listing →</a>
+            <p>Get listed in our directory for free and reach California homeowners searching for well services.</p>
+            <a href="mailto:info@california-groundwater.org?subject=Contractor%20Listing%20Request">Request Free Listing →</a>
         </div>
     </div>
     
